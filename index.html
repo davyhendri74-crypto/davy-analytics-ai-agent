@@ -1,108 +1,242 @@
-<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101329"><title>Davy Analytics AI Agent</title><style>
-:root{--bg:#0b1020;--p:#151d33;--line:#2d3957;--txt:#edf1ff;--muted:#9ba8c7;--cyan:#5ee7f2;--violet:#9b8cff;--pink:#ff82bd}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top right,#28204d,var(--bg) 48%);color:var(--txt);font-family:system-ui,Arial,sans-serif}.app{max-width:1100px;margin:auto;padding:16px}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:20px}.brand{display:flex;gap:10px;align-items:center}.logo{width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,var(--cyan),var(--violet),var(--pink));display:grid;place-items:center;color:#101329;font-weight:900}.brand h1{font-size:17px;margin:0}.brand p{font-size:11px;color:var(--muted);margin:3px 0}.badge{font-size:10px;color:var(--cyan);border:1px solid #455071;border-radius:20px;padding:7px}.hero,.card,.stat{border:1px solid var(--line);border-radius:18px;background:linear-gradient(140deg,#1b2440,#12192b);padding:18px}.hero{padding:24px}.eyebrow{color:var(--cyan);font-size:10px;letter-spacing:1.5px;font-weight:bold}.hero h2{font-size:clamp(26px,5vw,40px);line-height:1.12;margin:12px 0}.hero p,.agent p{color:#b5c0df;line-height:1.55;font-size:13px}.btn{border:0;border-radius:11px;padding:11px 14px;font-weight:bold;cursor:pointer;margin:5px 5px 0 0}.primary{background:linear-gradient(100deg,var(--cyan),#a5eadf);color:#101329}.secondary{background:#28314c;color:var(--txt);border:1px solid #414c6b}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}.stat .label{font-size:11px;color:var(--muted)}.stat strong{display:block;font-size:25px;margin-top:8px}.head{margin:25px 0 12px}.head h3{margin:0;font-size:17px}.head p{margin:5px 0;color:var(--muted);font-size:12px}.agents{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.agent{min-height:150px}.agent h4{margin:12px 0 5px}.icon{font-size:23px}.tag{font-size:10px;background:#222d49;color:#bfcdf0;padding:5px 8px;border-radius:7px}.work{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{margin-bottom:12px}.field label{display:block;color:var(--muted);font-size:11px;margin-bottom:6px}.field input,.field select,.field textarea{width:100%;background:#0c1325;border:1px solid #34405f;border-radius:10px;padding:11px;color:var(--txt)}.field textarea{min-height:75px}.tasks{display:grid;gap:8px}
 
-.research-box{
-  margin-top:22px;
-  border:1px solid #3a4770;
-  border-radius:18px;
-  padding:18px;
-  background:linear-gradient(140deg,#1a2542,#11182b)
-}
-.research-box textarea{
-  width:100%;
-  min-height:110px;
-  resize:vertical;
-  background:#0c1325;
-  border:1px solid #34405f;
-  border-radius:10px;
-  padding:12px;
-  color:var(--txt);
-  font:inherit;
-  line-height:1.5
-}
-.research-actions{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-  margin-top:10px
-}
-.research-status{
-  color:var(--muted);
-  font-size:12px;
-  margin:10px 0
-}
-.research-answer{
-  margin-top:14px;
-  padding:15px;
-  border:1px solid #34405f;
-  border-radius:12px;
-  background:#0b1326;
-  display:none
-}
-.research-answer h4{
-  margin:0 0 10px
-}
-.research-result{
-  white-space:pre-wrap;
-  line-height:1.65;
-  font-size:14px;
-  color:#e9eeff;
-  overflow-wrap:anywhere
-}
-.research-answer.error{
-  border-color:#9a5365
-}
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101329">
+<title>Davy Analytics AI Agent</title>
+<style>
+:root{--bg:#0b1020;--p:#151d33;--line:#2d3957;--txt:#edf1ff;--muted:#9ba8c7;--cyan:#5ee7f2;--violet:#9b8cff;--pink:#ff82bd}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at top right,#28204d,var(--bg) 48%);color:var(--txt);font-family:system-ui,Arial,sans-serif}
+.app{max-width:1100px;margin:auto;padding:16px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:20px}
+.brand{display:flex;gap:10px;align-items:center}
+.logo{width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,var(--cyan),var(--violet),var(--pink));display:grid;place-items:center;color:#101329;font-weight:900}
+.brand h1{font-size:17px;margin:0}
+.brand p{font-size:11px;color:var(--muted);margin:3px 0}
+.badge{font-size:10px;color:var(--cyan);border:1px solid #455071;border-radius:20px;padding:7px}
+.hero,.card,.stat{border:1px solid var(--line);border-radius:18px;background:linear-gradient(140deg,#1b2440,#12192b);padding:18px}
+.hero{padding:24px}
+.eyebrow{color:var(--cyan);font-size:10px;letter-spacing:1.5px;font-weight:bold}
+.hero h2{font-size:clamp(26px,5vw,40px);line-height:1.12;margin:12px 0}
+.hero p,.agent p{color:#b5c0df;line-height:1.55;font-size:13px}
+.btn{border:0;border-radius:11px;padding:11px 14px;font-weight:bold;cursor:pointer;margin:5px 5px 0 0}
+.primary{background:linear-gradient(100deg,var(--cyan),#a5eadf);color:#101329}
+.secondary{background:#28314c;color:var(--txt);border:1px solid #414c6b}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}
+.stat .label{font-size:11px;color:var(--muted)}
+.stat strong{display:block;font-size:25px;margin-top:8px}
+.head{margin:25px 0 12px}
+.head h3{margin:0;font-size:17px}
+.head p{margin:5px 0;color:var(--muted);font-size:12px}
+.agents{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.agent{min-height:150px}
+.agent h4{margin:12px 0 5px}
+.icon{font-size:23px}
+.tag{font-size:10px;background:#222d49;color:#bfcdf0;padding:5px 8px;border-radius:7px}
+.work{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.field{margin-bottom:12px}
+.field label{display:block;color:var(--muted);font-size:11px;margin-bottom:6px}
+.field input,.field select,.field textarea{width:100%;background:#0c1325;border:1px solid #34405f;border-radius:10px;padding:11px;color:var(--txt)}
+.field textarea{min-height:75px}
+.tasks{display:grid;gap:8px}
+.research-box{margin-top:22px;border:1px solid #3a4770;border-radius:18px;padding:18px;background:linear-gradient(140deg,#1a2542,#11182b)}
+.research-box textarea{width:100%;min-height:110px;resize:vertical;background:#0c1325;border:1px solid #34405f;border-radius:10px;padding:12px;color:var(--txt);font:inherit;line-height:1.5}
+.research-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.research-status{color:var(--muted);font-size:12px;margin:10px 0}
+.research-answer{margin-top:14px;padding:15px;border:1px solid #34405f;border-radius:12px;background:#0b1326;display:none}
+.research-answer h4{margin:0 0 10px}
+.research-result{white-space:pre-wrap;line-height:1.65;font-size:14px;color:#e9eeff;overflow-wrap:anywhere}
+.research-answer.error{border-color:#9a5365}
+.task{display:flex;gap:10px;padding:12px;background:#0d1528;border:1px solid #2c3855;border-radius:12px;font-size:13px}
+.task small{display:block;color:var(--muted);margin-top:5px}
+.empty{font-size:12px;color:var(--muted);padding:20px;text-align:center}
+.note{margin-top:18px;padding:13px;border:1px solid #63502f;background:#2a2418;border-radius:12px;color:#eadbb6;font-size:11px;line-height:1.5}
+.foot{text-align:center;color:#7784a6;font-size:10px;padding:20px 0}
+@media(max-width:700px){.stats{grid-template-columns:repeat(2,1fr)}.agents,.work{grid-template-columns:1fr}.hero{padding:20px}.top{align-items:flex-start}.agent{min-height:0}}
+</style>
+</head>
+<body>
+<main class="app">
+<header class="top">
+  <div class="brand">
+    <div class="logo">DA</div>
+    <div><h1>Davy Analytics AI Agent</h1><p>Multi-business digital command center</p></div>
+  </div>
+  <span class="badge">PROTOTIPE v1.0</span>
+</header>
 
-.task{display:flex;gap:10px;padding:12px;background:#0d1528;border:1px solid #2c3855;border-radius:12px;font-size:13px}.task small{display:block;color:var(--muted);margin-top:5px}.empty{font-size:12px;color:var(--muted);padding:20px;text-align:center}.note{margin-top:18px;padding:13px;border:1px solid #63502f;background:#2a2418;border-radius:12px;color:#eadbb6;font-size:11px;line-height:1.5}.foot{text-align:center;color:#7784a6;font-size:10px;padding:20px 0}@media(max-width:700px){.stats{grid-template-columns:repeat(2,1fr)}.agents,.work{grid-template-columns:1fr}.hero{padding:20px}.top{align-items:flex-start}.agent{min-height:0}}
-</style></head><body><main class="app"><header class="top"><div class="brand"><div class="logo">DA</div><div><h1>Davy Analytics AI Agent</h1><p>Multi-business digital command center</p></div></div><span class="badge">PROTOTIPE v1.0</span></header>
-<section class="hero"><div class="eyebrow">AI BUSINESS OPERATING SYSTEM</div><h2>Satu dashboard untuk mengubah ide menjadi pekerjaan nyata.</h2><p>Kelola riset, peluang usaha digital, pemasaran, dan analitik dari browser HP. Mesin AI akan dihubungkan pada tahap berikutnya.</p><button class="btn primary" onclick="document.querySelector('#title').focus()">＋ Buat tugas baru</button> <button class="btn secondary" onclick="document.querySelector('#agents').scrollIntoView({behavior:'smooth'})">Lihat agen</button></section>
-<section class="stats"><div class="stat"><div class="label">Total tugas</div><strong id="total">0</strong></div><div class="stat"><div class="label">Selesai</div><strong id="done">0</strong></div><div class="stat"><div class="label">Berjalan</div><strong id="active">0</strong></div><div class="stat"><div class="label">Agen tersedia</div><strong>5</strong></div></section>
-<div class="head" id="agents"><h3>AI Agent Workspace</h3><p>Pusat kendali bidang kerja.</p></div><section class="agents">
-<article class="card agent"><div class="icon">🔬</div><h4>Research Agent</h4><p>Pertanyaan riset, rancangan analisis, literatur, dan pekerjaan akademik.</p><span class="tag">Riset & akademik</span></article>
-<article class="card agent"><div class="icon">💼</div><h4>Business Agent</h4><p>Ide produk digital, pelanggan sasaran, dan eksperimen bisnis awal.</p><span class="tag">Peluang usaha</span></article>
-<article class="card agent"><div class="icon">📣</div><h4>Marketing Agent</h4><p>Brief konten, kalender publikasi, dan rencana promosi.</p><span class="tag">Pemasaran</span></article>
-<article class="card agent"><div class="icon">📊</div><h4>Analytics Agent</h4><p>Analisis data, indikator kinerja, dan laporan.</p><span class="tag">Data & evaluasi</span></article>
-<article class="card agent"><div class="icon">💰</div><h4>Revenue Tracker</h4><p>Pencatatan rencana pendapatan dan biaya secara manual.</p><span class="tag">Keuangan</span></article>
-<article class="card agent"><div class="icon">🛡️</div><h4>Human Approval</h4><p>Transaksi, pengiriman pesan, dan publikasi tetap memerlukan persetujuan manusia.</p><span class="tag">Keamanan</span></article></section>
-<div class="head"><h3>Task Manager</h3><p>Daftar tugas tersimpan di browser HP ini.</p></div><section class="research-box" id="research">
+<section class="hero">
+  <div class="eyebrow">AI BUSINESS OPERATING SYSTEM</div>
+  <h2>Satu dashboard untuk mengubah ide menjadi pekerjaan nyata.</h2>
+  <p>Gunakan enam agen AI untuk riset, analitik data, intelijen bisnis, pemasaran, pelacakan pendapatan, dan pemeriksaan persetujuan manusia.</p>
+  <button class="btn primary" onclick="document.querySelector('#title').focus()">＋ Buat tugas baru</button>
+  <button class="btn secondary" onclick="document.querySelector('#agents').scrollIntoView({behavior:'smooth'})">Lihat agen</button>
+</section>
+
+<section class="stats">
+  <div class="stat"><div class="label">Total tugas</div><strong id="total">0</strong></div>
+  <div class="stat"><div class="label">Selesai</div><strong id="done">0</strong></div>
+  <div class="stat"><div class="label">Berjalan</div><strong id="active">0</strong></div>
+  <div class="stat"><div class="label">Agen tersedia</div><strong>6</strong></div>
+</section>
+
+<div class="head" id="agents"><h3>AI Agent Workspace</h3><p>Pusat kendali bidang kerja.</p></div>
+<section class="agents">
+  <article class="card agent"><div class="icon">🔬</div><h4>Research Agent</h4><p>Pertanyaan riset, rancangan analisis, literatur, dan pekerjaan akademik.</p><span class="tag">Riset & akademik</span></article>
+  <article class="card agent"><div class="icon">💼</div><h4>Business Intelligence Agent</h4><p>Analisis pelanggan, model bisnis, biaya, pendapatan, risiko, dan strategi pertumbuhan.</p><span class="tag">Intelijen bisnis</span></article>
+  <article class="card agent"><div class="icon">📣</div><h4>Marketing Agent</h4><p>Brief konten, kalender publikasi, dan rencana promosi.</p><span class="tag">Pemasaran</span></article>
+  <article class="card agent"><div class="icon">📊</div><h4>Data Analytics Agent</h4><p>Analisis statistik, ekonometrika, indikator kinerja, dan interpretasi hasil.</p><span class="tag">Data & evaluasi</span></article>
+  <article class="card agent"><div class="icon">💰</div><h4>Revenue Tracker</h4><p>Pencatatan rencana pendapatan dan biaya secara manual.</p><span class="tag">Keuangan</span></article>
+  <article class="card agent"><div class="icon">🛡️</div><h4>Human Approval</h4><p>Transaksi, pengiriman pesan, dan publikasi tetap memerlukan persetujuan manusia.</p><span class="tag">Keamanan</span></article>
+</section>
+
+<div class="head"><h3>Task Manager</h3><p>Daftar tugas tersimpan di browser HP ini.</p></div>
+
+<section class="research-box" id="research">
   <div class="eyebrow">LIVE AI CONNECTION</div>
+  <h3 style="margin:8px 0">AI Agent Workspace</h3>
+  <p style="color:#b5c0df;line-height:1.55;font-size:13px">Pilih agen yang sesuai, masukkan pertanyaan, lalu kirim ke Cloudflare Worker. Jawaban AI akan ditampilkan di sini.</p>
 
-  <h3 style="margin:8px 0">Research Agent</h3>
+  <label for="activeAgent" style="display:block;color:var(--muted);font-size:12px;margin:12px 0 6px">Pilih agen AI</label>
+  <select id="activeAgent" style="width:100%;background:#0c1325;border:1px solid #34405f;border-radius:10px;padding:11px;color:var(--txt)">
+    <option value="research">Research Agent</option>
+    <option value="analytics">Data Analytics Agent</option>
+    <option value="business">Business Intelligence Agent</option>
+    <option value="marketing">Marketing Agent</option>
+    <option value="revenue">Revenue Tracker Agent</option>
+    <option value="approval">Human Approval Agent</option>
+  </select>
 
-  <p style="color:#b5c0df;line-height:1.55;font-size:13px">
-    Ketik pertanyaan Anda. Dashboard akan mengirimkannya ke Cloudflare Worker dan menampilkan jawaban AI di sini.
-  </p>
-
-  <label for="researchQuestion" style="display:block;color:var(--muted);font-size:12px;margin:12px 0 6px">
-    Pertanyaan analisis
-  </label>
-
-  <textarea id="researchQuestion" maxlength="6000"
-    placeholder="Contoh: Analisis lima peluang bisnis digital di Indonesia, termasuk target pasar, modal awal, model pendapatan, dan risiko."></textarea>
+  <label for="researchQuestion" style="display:block;color:var(--muted);font-size:12px;margin:12px 0 6px">Pertanyaan atau tugas</label>
+  <textarea id="researchQuestion" maxlength="6000" placeholder="Contoh: Analisis lima peluang bisnis digital di Indonesia, termasuk target pasar, modal awal, model pendapatan, dan risiko."></textarea>
 
   <div class="research-actions">
-    <button id="researchSend" class="btn primary" type="button">
-      🔎 Analisis dengan AI
-    </button>
-
-    <button id="researchClear" class="btn secondary" type="button">
-      Bersihkan
-    </button>
+    <button id="researchSend" class="btn primary" type="button">🔎 Analisis dengan AI</button>
+    <button id="researchClear" class="btn secondary" type="button">Bersihkan</button>
   </div>
 
-  <div id="researchStatus" class="research-status" role="status" aria-live="polite">
-    Siap menerima pertanyaan.
-  </div>
-
+  <div id="researchStatus" class="research-status" role="status" aria-live="polite">Siap menerima pertanyaan.</div>
   <div id="researchAnswer" class="research-answer">
-    <h4>Jawaban Research Agent</h4>
+    <h4 id="researchAnswerHeading">Jawaban AI Agent</h4>
     <div id="researchAnswerText" class="research-result"></div>
   </div>
-</section><section class="work"><div class="card"><form id="form"><div class="field"><label>Nama tugas</label><input id="title" maxlength="120" required placeholder="Contoh: Validasi ide produk digital"></div><div class="field"><label>Agen</label><select id="agent"><option>Business Agent</option><option>Research Agent</option><option>Marketing Agent</option><option>Analytics Agent</option><option>Revenue Tracker</option></select></div><div class="field"><label>Catatan</label><textarea id="desc" maxlength="500" placeholder="Hasil yang ingin dicapai..."></textarea></div><button class="btn primary">Simpan tugas</button></form></div><div class="card"><div style="display:flex;justify-content:space-between;gap:8px;align-items:center"><h3>Daftar tugas</h3><button id="clear" class="btn secondary">Hapus selesai</button></div><div id="list" class="tasks"></div></div></section>
-<div class="note"><b>Catatan prototipe:</b> ini dashboard statis, belum memanggil model AI atau menjalankan tugas otomatis. Data tugas tersimpan lokal pada browser ini dan tidak tersinkron ke perangkat lain. Jangan masukkan API key, kata sandi, atau data rahasia.</div><div class="foot">Davy Analytics AI Agent · GitHub Pages MVP</div></main>
+</section>
+
+<section class="work">
+  <div class="card">
+    <form id="form">
+      <div class="field"><label>Nama tugas</label><input id="title" maxlength="120" required placeholder="Contoh: Validasi ide produk digital"></div>
+      <div class="field">
+        <label>Agen</label>
+        <select id="agent">
+          <option>Business Intelligence Agent</option>
+          <option>Research Agent</option>
+          <option>Marketing Agent</option>
+          <option>Data Analytics Agent</option>
+          <option>Revenue Tracker Agent</option>
+          <option>Human Approval Agent</option>
+        </select>
+      </div>
+      <div class="field"><label>Catatan</label><textarea id="desc" maxlength="500" placeholder="Hasil yang ingin dicapai..."></textarea></div>
+      <button class="btn primary">Simpan tugas</button>
+    </form>
+  </div>
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;gap:8px;align-items:center"><h3>Daftar tugas</h3><button id="clear" class="btn secondary">Hapus selesai</button></div>
+    <div id="list" class="tasks"></div>
+  </div>
+</section>
+
+<div class="note"><b>Catatan:</b> pertanyaan AI dikirim ke Cloudflare Worker. Task Manager menyimpan daftar tugas secara lokal di browser ini dan tidak menjalankan tugas otomatis atau menyinkronkan data ke perangkat lain. Jangan masukkan API key, kata sandi, atau data rahasia.</div>
+<div class="foot">Davy Analytics AI Agent · GitHub Pages MVP</div>
+</main>
+
 <script>
-const K='davy_ai_tasks_v1';let ts=[];try{ts=JSON.parse(localStorage.getItem(K)||'[]')}catch(e){}const el=id=>document.getElementById(id);function save(){localStorage.setItem(K,JSON.stringify(ts));render()}function render(){el('total').textContent=ts.length;el('done').textContent=ts.filter(x=>x.done).length;el('active').textContent=ts.filter(x=>!x.done).length;el('list').innerHTML='';if(!ts.length){el('list').innerHTML='<div class="empty">Belum ada tugas. Tambahkan tugas pertama.</div>';return}ts.slice().reverse().forEach(t=>{let row=document.createElement('div');row.className='task';let cb=document.createElement('input');cb.type='checkbox';cb.checked=t.done;cb.onchange=()=>{t.done=cb.checked;save()};let box=document.createElement('div');box.style.flex='1';let title=document.createElement('b');title.textContent=t.title;if(t.done)title.style.textDecoration='line-through';let meta=document.createElement('small');meta.textContent=t.agent+' · '+new Date(t.created).toLocaleDateString('id-ID')+(t.desc?' · '+t.desc:'');box.append(title,meta);row.append(cb,box);el('list').append(row)})}el('form').onsubmit=e=>{e.preventDefault();ts.push({title:el('title').value.trim(),agent:el('agent').value,desc:el('desc').value.trim(),done:false,created:new Date().toISOString()});save();e.target.reset()};el('clear').onclick=()=>{ts=ts.filter(x=>!x.done);save()};render();
-const RESEARCH_API='https://davy-research-agent.davyhendri74.workers.dev/research';
+const K='davy_ai_tasks_v1';
+let ts=[];
+try{ts=JSON.parse(localStorage.getItem(K)||'[]')}catch(e){}
+const el=id=>document.getElementById(id);
+
+function save(){
+  localStorage.setItem(K,JSON.stringify(ts));
+  render();
+}
+
+function render(){
+  el('total').textContent=ts.length;
+  el('done').textContent=ts.filter(x=>x.done).length;
+  el('active').textContent=ts.filter(x=>!x.done).length;
+  el('list').innerHTML='';
+
+  if(!ts.length){
+    el('list').innerHTML='<div class="empty">Belum ada tugas. Tambahkan tugas pertama.</div>';
+    return;
+  }
+
+  ts.slice().reverse().forEach(t=>{
+    let row=document.createElement('div');
+    row.className='task';
+
+    let cb=document.createElement('input');
+    cb.type='checkbox';
+    cb.checked=t.done;
+    cb.onchange=()=>{t.done=cb.checked;save()};
+
+    let box=document.createElement('div');
+    box.style.flex='1';
+
+    let title=document.createElement('b');
+    title.textContent=t.title;
+    if(t.done)title.style.textDecoration='line-through';
+
+    let meta=document.createElement('small');
+    meta.textContent=t.agent+' · '+new Date(t.created).toLocaleDateString('id-ID')+(t.desc?' · '+t.desc:'');
+
+    box.append(title,meta);
+    row.append(cb,box);
+    el('list').append(row);
+  });
+}
+
+el('form').onsubmit=e=>{
+  e.preventDefault();
+  ts.push({
+    title:el('title').value.trim(),
+    agent:el('agent').value,
+    desc:el('desc').value.trim(),
+    done:false,
+    created:new Date().toISOString()
+  });
+  save();
+  e.target.reset();
+};
+
+el('clear').onclick=()=>{
+  ts=ts.filter(x=>!x.done);
+  save();
+};
+
+render();
+
+const AGENT_API='https://davy-research-agent.davyhendri74.workers.dev/agent';
+
+const AGENT_NAMES={
+  research:'Research Agent',
+  analytics:'Data Analytics Agent',
+  business:'Business Intelligence Agent',
+  marketing:'Marketing Agent',
+  revenue:'Revenue Tracker Agent',
+  approval:'Human Approval Agent'
+};
+
+el('activeAgent').addEventListener('change',()=>{
+  const name=AGENT_NAMES[el('activeAgent').value]||'AI Agent';
+  el('researchAnswerHeading').textContent='Jawaban '+name;
+  el('researchStatus').textContent='Agen aktif: '+name+'. Siap menerima pertanyaan.';
+});
 
 el('researchSend').addEventListener('click',async()=>{
   const question=el('researchQuestion').value.trim();
@@ -117,17 +251,20 @@ el('researchSend').addEventListener('click',async()=>{
     return;
   }
 
+  const agentKey=el('activeAgent').value;
+  const agentName=AGENT_NAMES[agentKey]||'AI Agent';
+  el('researchAnswerHeading').textContent='Jawaban '+agentName;
   btn.disabled=true;
   btn.textContent='⏳ AI sedang menganalisis…';
-  status.textContent='Mengirim pertanyaan ke Research Agent…';
+  status.textContent='Mengirim pertanyaan ke '+agentName+'…';
   answerBox.style.display='none';
   answerBox.classList.remove('error');
 
   try{
-    const res=await fetch(RESEARCH_API,{
+    const res=await fetch(AGENT_API,{
       method:'POST',
       headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({question})
+      body:JSON.stringify({question,agent:agentKey})
     });
 
     const data=await res.json();
@@ -158,4 +295,6 @@ el('researchClear').addEventListener('click',()=>{
   el('researchAnswer').style.display='none';
   el('researchStatus').textContent='Siap menerima pertanyaan.';
 });
-</script></body></html>
+</script>
+</body>
+</html>
