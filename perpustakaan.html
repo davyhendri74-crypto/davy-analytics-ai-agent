@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101329">
+<title>Perpustakaan Digital — Davy Analytics</title>
+<style>
+:root{--bg:#0b1020;--panel:#18233d;--line:#34405f;--text:#edf1ff;--muted:#b8c5e2;--cyan:#5ee7f2;--violet:#9b8cff}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top right,#28204d,var(--bg) 48%);color:var(--text);font-family:system-ui,Arial,sans-serif}
+.wrap{max-width:1080px;margin:auto;padding:22px 16px 40px}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:24px}.brand{display:flex;align-items:center;gap:12px}.logo{width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,var(--cyan),var(--violet));display:grid;place-items:center;color:#101329;font-weight:900}.brand h1{font-size:17px;margin:0}.brand p{font-size:11px;color:var(--muted);margin:3px 0}.back{color:var(--cyan);text-decoration:none;border:1px solid var(--line);padding:10px 12px;border-radius:10px;font-size:12px}
+.hero,.book{border:1px solid var(--line);border-radius:18px;background:linear-gradient(140deg,#1b2440,#12192b);padding:20px}.eyebrow{font-size:10px;letter-spacing:1.5px;color:var(--cyan);font-weight:800}.hero h2{font-size:clamp(26px,5vw,38px);margin:10px 0}.hero p,.book p{color:var(--muted);line-height:1.6;font-size:13px}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:16px}.book{display:flex;flex-direction:column;min-height:260px}.ico{font-size:30px}.book h3{font-size:17px;margin:12px 0 5px}.book p{flex:1}.tag{font-size:10px;color:#cbd5f5;background:#283451;border-radius:7px;padding:6px 8px;align-self:flex-start}.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.btn{display:inline-block;text-decoration:none;padding:10px 12px;border-radius:10px;font-size:12px;font-weight:750}.primary{background:linear-gradient(100deg,var(--cyan),#a5eadf);color:#101329}.secondary{background:#293653;color:var(--text);border:1px solid #455477}.note{margin-top:18px;padding:13px;border:1px solid #63502f;background:#2a2418;border-radius:12px;color:#eadbb6;font-size:11px;line-height:1.55}.foot{text-align:center;color:#7784a6;font-size:10px;padding:22px 0 0}
+@media(max-width:760px){.grid{grid-template-columns:1fr}.book{min-height:0}.top{align-items:flex-start;flex-direction:column}.back{align-self:flex-start}}
+</style>
+</head>
+<body>
+<main class="wrap">
+<header class="top"><div class="brand"><div class="logo">DA</div><div><h1>Davy Analytics AI Agent</h1><p>Digital Knowledge Library</p></div></div><a class="back" href="./index.html">← Kembali ke Dashboard</a></header>
+<section class="hero"><div class="eyebrow">DAVY ANALYTICS · DIGITAL LIBRARY</div><h2>Perpustakaan Digital</h2><p>Akses buku dan materi pembelajaran dalam format PDF asli. Tombol <b>Baca / Buka PDF</b> membuka dokumen langsung di tab browser baru, sedangkan tombol <b>Unduh PDF</b> menyimpan dokumen ke perangkat. Halaman ini tidak menggunakan iframe sehingga mengurangi masalah pratinjau PDF yang diblokir.</p></section>
+<section class="grid" aria-label="Daftar materi">
+<article class="book"><div class="ico">📘</div><span class="tag">BUKU · GAME THEORY</span><h3>Teori Permainan (Game Theory)</h3><p>Naskah buku asli penerbit Rajawali Press. Tautan mengarah ke file PDF lengkap yang tersimpan di repository.</p><div class="actions"><a class="btn primary" href="./Teori%20Permainan%20%28Final%29_Rajawali1.pdf" target="_blank" rel="noopener">Baca / Buka PDF</a><a class="btn secondary" href="./Teori%20Permainan%20%28Final%29_Rajawali1.pdf" download>Unduh PDF</a><a class="btn secondary" href="./bab5-asli.html" target="_blank" rel="noopener">Cuplikan Bab 5</a></div></article>
+<article class="book"><div class="ico">📕</div><span class="tag">BUKU · KRIMINALITAS</span><h3>Penjara, Kriminalitas dan Efek Jera</h3><p>Buku asli dalam format PDF. Dokumen dapat dibaca menggunakan PDF viewer bawaan browser.</p><div class="actions"><a class="btn primary" href="./Penjara-Kriminalitas.pdf" target="_blank" rel="noopener">Baca / Buka PDF</a><a class="btn secondary" href="./Penjara-Kriminalitas.pdf" download>Unduh PDF</a></div></article>
+<article class="book"><div class="ico">🎓</div><span class="tag">MODUL · PELATIHAN</span><h3>Modul Pelatihan Game Theory</h3><p>Materi pelatihan praktisi perbankan syariah dalam format PDF, termasuk materi sesi dan bahan praktik.</p><div class="actions"><a class="btn primary" href="./Modul-Pelatihan-Game-Theory.pdf" target="_blank" rel="noopener">Baca / Buka PDF</a><a class="btn secondary" href="./Modul-Pelatihan-Game-Theory.pdf" download>Unduh PDF</a></div></article>
+</section>
+<div class="note"><b>Catatan pembukaan:</b> jika PDF tidak langsung tampil, pastikan browser mengizinkan tab baru. Pada HP, dokumen dapat terbuka di browser atau aplikasi pembaca PDF. Gunakan tombol kembali browser untuk kembali ke perpustakaan.</div>
+<footer class="foot">Davy Analytics AI Agent · Perpustakaan Digital</footer>
+</main>
+</body>
+</html>
