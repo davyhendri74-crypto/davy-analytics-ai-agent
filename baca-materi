@@ -1,0 +1,431 @@
+
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b1020">
+<title>Cuplikan Materi — Davy Analytics</title>
+
+<style>
+:root {
+  --bg:#0b1020;
+  --panel:#151e33;
+  --panel2:#10182b;
+  --line:#34405f;
+  --text:#edf1ff;
+  --muted:#b9c6e3;
+  --cyan:#69e7ef;
+  --gold:#e7d3a0;
+}
+
+* {
+  box-sizing:border-box;
+}
+
+body {
+  margin:0;
+  background:radial-gradient(ellipse at top right,#27204a,var(--bg) 48%);
+  color:var(--text);
+  font:16px/1.7 system-ui,-apple-system,Segoe UI,sans-serif;
+}
+
+.wrap {
+  max-width:940px;
+  margin:auto;
+  padding:18px 15px 42px;
+}
+
+.top {
+  position:sticky;
+  top:0;
+  z-index:5;
+  background:#0b1020ed;
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+
+.nav {
+  max-width:940px;
+  margin:auto;
+  padding:12px 15px;
+  display:flex;
+  gap:9px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+.btn {
+  display:inline-block;
+  background:#273653;
+  color:#fff;
+  border:1px solid #465778;
+  border-radius:10px;
+  padding:9px 13px;
+  text-decoration:none;
+  font-weight:700;
+  font-size:13px;
+}
+
+.hero,.excerpt,.notice {
+  background:linear-gradient(145deg,#192440,#121a2d);
+  border:1px solid var(--line);
+  border-radius:17px;
+  padding:19px;
+  margin:16px 0;
+}
+
+.eyebrow {
+  color:var(--cyan);
+  font-size:11px;
+  letter-spacing:1.4px;
+  font-weight:800;
+}
+
+.hero h1 {
+  font-size:clamp(26px,5vw,36px);
+  line-height:1.2;
+  margin:8px 0;
+}
+
+.hero p,.excerpt p {
+  color:var(--muted);
+}
+
+.excerpt h2 {
+  font-size:21px;
+  line-height:1.3;
+  margin:8px 0;
+}
+
+.label {
+  display:inline-block;
+  background:#283653;
+  color:#dbe5ff;
+  border-radius:8px;
+  padding:4px 9px;
+  font-size:11px;
+  font-weight:750;
+}
+
+.sample {
+  margin-top:14px;
+  padding:15px;
+  border-left:3px solid var(--cyan);
+  background:#0c1528;
+  border-radius:0 10px 10px 0;
+}
+
+.sample p {
+  margin:0 0 12px;
+}
+
+.sample p:last-child {
+  margin-bottom:0;
+}
+
+.formula {
+  font-weight:800;
+  color:#fff;
+  text-align:center;
+  padding:10px;
+  background:#1a2944;
+  border-radius:9px;
+  margin:12px 0;
+}
+
+.notice {
+  border-color:#6b5936;
+  background:#2a2418;
+  color:var(--gold);
+  font-size:13px;
+}
+
+.foot {
+  text-align:center;
+  color:#8491b0;
+  font-size:11px;
+  padding:18px 0;
+}
+
+@media(max-width:600px) {
+  .wrap {
+    padding:12px;
+  }
+
+  .hero,.excerpt,.notice {
+    padding:15px;
+  }
+
+  .excerpt h2 {
+    font-size:19px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="top">
+  <nav class="nav">
+    <a class="btn" href="./perpustakaan.html">
+      ← Katalog Pustaka
+    </a>
+
+    <a class="btn" href="./indeks.html">
+      Dashboard
+    </a>
+
+    <span style="font-weight:800">
+      Davy Analytics · Cuplikan Bacaan
+    </span>
+  </nav>
+</header>
+
+<main class="wrap">
+
+<section class="hero">
+  <div class="eyebrow">
+    DAVY ANALYTICS &amp; INNOVATION LAB
+  </div>
+
+  <h1>Cuplikan Materi Pilihan</h1>
+
+  <p>
+    Halaman ini hanya menyediakan pengantar dan cuplikan
+    pendek dari setiap buku atau modul. Isi bab secara utuh,
+    naskah lengkap, serta file PDF penuh tidak ditampilkan
+    pada halaman publik ini.
+  </p>
+</section>
+
+
+<!-- BUKU GAME THEORY -->
+
+<section class="excerpt" id="game-theory">
+
+  <span class="label">BUKU · GAME THEORY</span>
+
+  <h2>
+    Teori Permainan (Game Theory) —
+    Bab 5: Keseimbangan Nash
+  </h2>
+
+  <p>
+    <b>Pokok bahasan:</b>
+    bagaimana pemain rasional memilih strategi ketika
+    keputusan masing-masing saling memengaruhi.
+  </p>
+
+  <div class="sample">
+
+    <p>
+      Nash Equilibrium memberikan jawaban atas pertanyaan:
+      kombinasi strategi apa yang akan dipilih oleh para
+      pemain yang rasional ketika mereka tidak memiliki
+      insentif untuk mengubah pilihannya secara sepihak?
+    </p>
+
+    <p>
+      Dalam keseimbangan Nash, setiap pemain sedang
+      melakukan yang terbaik (best response) terhadap
+      apa yang dilakukan pemain lain. Tidak ada seorang
+      pun yang ingin menyimpang secara sepihak.
+    </p>
+
+    <p>
+      <b>Inti konsep:</b>
+      sebuah kombinasi strategi disebut Nash Equilibrium
+      apabila tidak ada pemain yang dapat meningkatkan
+      payoff-nya dengan mengubah strategi sendiri,
+      sementara strategi pemain lain tetap.
+    </p>
+
+  </div>
+
+  <p>
+    <b>Cuplikan pembelajaran:</b>
+    memahami definisi intuitif dan formal Nash Equilibrium
+    serta mengenali perbedaan antara keseimbangan
+    individual dan hasil terbaik secara sosial.
+  </p>
+
+</section>
+
+
+<!-- BUKU PENJARA DAN KRIMINALITAS -->
+
+<section class="excerpt" id="penjara-kriminalitas">
+
+  <span class="label">BUKU · KRIMINALITAS</span>
+
+  <h2>
+    Penjara, Kriminalitas dan Efek Jera —
+    Bab 1: Mengapa Penjara Kita Penuh?
+  </h2>
+
+  <p>
+    <b>Pokok bahasan:</b>
+    persoalan kelebihan penghuni penjara dan faktor
+    kebijakan yang membentuknya.
+  </p>
+
+  <div class="sample">
+
+    <p>
+      Bab ini membuka pembahasan mengenai kondisi penjara
+      di Indonesia yang tengah mengalami krisis kelebihan
+      penghuni (overcrowding). Pembaca diajak melihat akar
+      permasalahan yang menyebabkan penjara menjadi
+      begitu sesak.
+    </p>
+
+    <p>
+      Berbagai faktor—mulai dari dominasi kasus narkoba,
+      kebijakan hukum yang masih mengandalkan pemenjaraan,
+      hingga sistem peradilan yang belum efisien—perlu
+      dilihat secara bersama untuk memahami persoalan tersebut.
+    </p>
+
+    <p>
+      Masalah penjara bukan hanya persoalan teknis kapasitas.
+      Ia juga berkaitan dengan dampak sosial, kesehatan,
+      keamanan, serta efektivitas rehabilitasi.
+    </p>
+
+  </div>
+
+  <p>
+    <b>Cuplikan pembelajaran:</b>
+    melihat pemenjaraan sebagai pilihan kebijakan publik
+    yang memiliki konsekuensi sosial dan ekonomi.
+  </p>
+
+</section>
+
+
+<!-- BUKU EKONOMETRIKA DID -->
+
+<section class="excerpt" id="ekonometrika-did">
+
+  <span class="label">BUKU · EKONOMETRIKA</span>
+
+  <h2>
+    Ekonometrika Lanjutan —
+    Bab 3: Difference-in-Differences
+  </h2>
+
+  <p>
+    <b>Pokok bahasan:</b>
+    membandingkan perubahan kelompok perlakuan dan
+    kelompok kontrol untuk mengidentifikasi dampak
+    suatu intervensi.
+  </p>
+
+  <div class="sample">
+
+    <p>
+      Bayangkan seseorang sedang demam. Setelah meminum obat,
+      suhu tubuhnya turun. Apakah penurunan itu terjadi karena
+      obat, atau memang demam akan turun dengan sendirinya?
+      Inilah persoalan <i>counterfactual</i> dalam evaluasi kebijakan.
+    </p>
+
+    <p>
+      Difference-in-Differences (DID) menggunakan kelompok
+      pembanding untuk memperkirakan perubahan yang mungkin
+      terjadi tanpa intervensi. DID tidak sekadar membandingkan
+      tingkat akhir dua kelompok, tetapi membandingkan
+      perubahan yang dialami masing-masing kelompok.
+    </p>
+
+    <div class="formula">
+      DID = (Sesudah − Sebelum) Perlakuan
+      <br>
+      − (Sesudah − Sebelum) Kontrol
+    </div>
+
+    <p>
+      Dengan pendekatan ini, peneliti berusaha memisahkan
+      dampak program dari perubahan umum yang juga dialami
+      kelompok pembanding.
+    </p>
+
+  </div>
+
+  <p>
+    <b>Cuplikan pembelajaran:</b>
+    logika counterfactual, kelompok kontrol,
+    asumsi parallel trends, dan interpretasi
+    koefisien DID.
+  </p>
+
+</section>
+
+
+<!-- MODUL PELATIHAN -->
+
+<section class="excerpt" id="modul-pelatihan">
+
+  <span class="label">MODUL · PELATIHAN</span>
+
+  <h2>
+    Menganalisis Kontrak Syariah dengan Game Theory
+  </h2>
+
+  <p>
+    <b>Pokok bahasan:</b>
+    penggunaan teori permainan untuk memahami insentif
+    dan merancang kontrak pembiayaan syariah.
+  </p>
+
+  <div class="sample">
+
+    <p>
+      Salah satu tantangan dalam pembiayaan adalah perilaku
+      para pihak setelah akad disepakati. Masalah seperti
+      <i>moral hazard</i> dan <i>adverse selection</i>
+      menunjukkan bahwa desain kontrak perlu memperhatikan
+      insentif ekonomi, bukan hanya bentuk formal perjanjian.
+    </p>
+
+    <p>
+      Game Theory menyediakan kerangka untuk memahami
+      interaksi strategis antara bank dan nasabah,
+      mengidentifikasi celah insentif, serta merancang
+      kontrak yang mendorong perilaku jujur dan produktif.
+    </p>
+
+    <p>
+      Pelatihan dirancang dengan pendekatan teori dan praktik,
+      termasuk pemetaan pohon permainan, matriks payoff,
+      analisis keseimbangan, simulasi, dan studi kasus.
+    </p>
+
+  </div>
+
+  <p>
+    <b>Cuplikan pembelajaran:</b>
+    bagaimana asimetri informasi dan desain insentif
+    dapat dianalisis dalam kontrak syariah.
+  </p>
+
+</section>
+
+
+<div class="notice">
+  <b>Pemberitahuan akses publik:</b>
+  materi di halaman ini merupakan cuplikan pengenalan,
+  bukan pengganti buku atau modul. Untuk melindungi naskah
+  lengkap, file sumber PDF/DOC dan halaman yang memuat
+  seluruh isi bab harus disimpan di repositori privat
+  atau penyimpanan dengan akses terbatas.
+</div>
+
+<footer class="foot">
+  Davy Analytics &amp; Innovation Lab · Public Reading Preview
+</footer>
+
+</main>
+</body>
+</html>
