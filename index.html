@@ -16,6 +16,30 @@
 .task{display:flex;gap:10px;padding:12px;background:#0d1528;border:1px solid #2c3855;border-radius:12px;font-size:13px}.task small{display:block;color:var(--muted);margin-top:5px}.empty{font-size:12px;color:var(--muted);padding:20px;text-align:center}.note{margin-top:18px;padding:13px;border:1px solid #63502f;background:#2a2418;border-radius:12px;color:#eadbb6;font-size:11px;line-height:1.5}.foot{text-align:center;color:#7784a6;font-size:10px;padding:20px 0}
 .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.metric{background:#0d1528;border:1px solid var(--line);border-radius:14px;padding:14px}.metric span{display:block;color:var(--muted);font-size:11px}.metric strong{display:block;font-size:19px;margin-top:7px;overflow-wrap:anywhere}.catalog{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.product h4{margin:8px 0}.product p{color:#b5c0df;font-size:12px;line-height:1.5;min-height:52px}.price{color:var(--cyan);font-weight:700;font-size:13px}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:12px;min-width:760px}th,td{text-align:left;padding:10px;border-bottom:1px solid #2d3957;vertical-align:top}th{color:var(--muted);font-weight:600}.status{display:inline-block;border-radius:7px;padding:4px 7px;background:#34304b;color:#ddd4ff;font-size:10px}.smallbtn{padding:6px 8px;font-size:11px}.inline-fields{display:grid;grid-template-columns:1fr 1fr;gap:10px}.subtle{font-size:11px;color:var(--muted);line-height:1.5}.section-card{margin-top:12px}
 @media(max-width:760px){.stats,.metrics{grid-template-columns:repeat(2,1fr)}.agents,.work,.catalog{grid-template-columns:1fr}.hero{padding:20px}.top{align-items:flex-start}.agent{min-height:0}.inline-fields{grid-template-columns:1fr}}
+
+/* Agent workspace: distinct expertise, natural conversation, and workflow guidance */
+.agent{display:flex;flex-direction:column;gap:8px;min-height:0}
+.agent h4{margin:4px 0 0;font-size:15px}
+.agent p{margin:0;color:#b5c0df;font-size:12px;line-height:1.6}
+.agent .agent-scope{color:#e8edff;font-size:12px;line-height:1.55}
+.agent .agent-open{align-self:flex-start;margin-top:auto}
+.agent-profile{margin:14px 0;padding:15px;border:1px solid #405078;border-radius:14px;background:linear-gradient(140deg,#202d4e,#111a2e)}
+.agent-profile h4{margin:0 0 6px;font-size:15px;color:#edf1ff}
+.agent-profile p{margin:5px 0;color:#c4cde5;font-size:12px;line-height:1.6}
+.agent-profile .profile-label{display:block;color:var(--cyan);font-size:10px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;margin-top:10px}
+.agent-chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
+.agent-chip{border:1px solid #435377;background:#182541;color:#e4ebff;border-radius:999px;padding:7px 10px;font-size:11px;cursor:pointer}
+.agent-chip:hover,.agent-open:hover{border-color:var(--cyan)}
+.chat-thread{display:grid;gap:10px;margin-top:15px}
+.chat-message{max-width:94%;padding:12px 14px;border:1px solid #344363;border-radius:13px;background:#0c1529}
+.chat-message.user{justify-self:end;background:#1c3150;border-color:#45658a}
+.chat-message.assistant{justify-self:start}
+.chat-message .message-label{font-size:10px;color:var(--cyan);font-weight:800;margin-bottom:6px}
+.chat-message .message-body{white-space:pre-wrap;overflow-wrap:anywhere;font-size:13px;line-height:1.7;color:#edf1ff}
+.chat-message.pending .message-body{color:#a9b8d8;font-style:italic}
+.agent-note{margin-top:10px;padding:10px 12px;background:#242235;border:1px solid #594b64;border-radius:10px;color:#d9d3e8;font-size:11px;line-height:1.55}
+@media(max-width:760px){.agent{min-height:0}.chat-message{max-width:100%}}
+
 </style>
 </head>
 <body><main class="app">
@@ -63,9 +87,6 @@
 <article class="card product"><div class="icon">🧩</div><span class="tag">Pengembangan digital</span><h4>Dashboard, Web & Aplikasi Kustom</h4><p>Pengembangan dashboard, aplikasi web/Android, kalkulator, simulasi, dan alat bantu kerja sesuai kebutuhan klien.</p><div class="price">Status: layanan proyek</div><button class="btn secondary" onclick="chooseProduct('Dashboard Web dan Aplikasi Kustom')">Buat pesanan</button></article>
 </section>
 
-
-</section>
-
 <div class="head"><h3>Tahap 2B · Metode Pembayaran</h3><p>Informasi pembayaran untuk pelanggan. Pastikan nama penerima dan detail pembayaran cocok sebelum mengirim uang.</p></div><section class="card"><div class="inline-fields"><div><div class="icon">🏦</div><h4>Transfer Bank BNI</h4><p>Nomor rekening: <strong>243584767</strong></p><p class="subtle">Mohon periksa nama pemilik rekening di aplikasi bank sebelum konfirmasi transfer.</p></div><div><div class="icon">💳</div><h4>PayPal</h4><p>Nama akun: <strong>Davy Hendri</strong></p><p>Username: <strong>@DavyHendri</strong></p><p class="subtle">Untuk menerima pembayaran, pelanggan dapat mencari akun berdasarkan username di PayPal. Periksa detail penerima sebelum mengirim.</p></div></div><p class="subtle">Catatan: bagian ini menampilkan instruksi pembayaran saja. Belum memproses atau memverifikasi pembayaran secara otomatis.</p></section><section id="orderSection" style="display:none"><div class="head"><h3>Formulir Pencatatan Pesanan</h3><p>Formulir dibuka saat tombol pesanan dipilih.</p></div>
 <section class="card">
 <form id="orderForm">
@@ -86,17 +107,94 @@
 
 <div class="head" id="agents"><h3>AI Agent Workspace</h3><p>Enam agen AI yang sudah tersedia.</p></div>
 <section class="agents">
-<article class="card agent"><div class="icon">🔬</div><h4>Research Agent</h4><p>Pertanyaan riset, rancangan analisis, literatur, dan pekerjaan akademik.</p><span class="tag">Riset & akademik</span></article>
-<article class="card agent"><div class="icon">💼</div><h4>Business Intelligence Agent</h4><p>Analisis pelanggan, model bisnis, biaya, pendapatan, risiko, dan strategi pertumbuhan.</p><span class="tag">Intelijen bisnis</span></article>
-<article class="card agent"><div class="icon">📣</div><h4>Marketing Agent</h4><p>Brief konten, kalender publikasi, dan rencana promosi.</p><span class="tag">Pemasaran</span></article>
-<article class="card agent"><div class="icon">📊</div><h4>Data Analytics Agent</h4><p>Analisis statistik, ekonometrika, indikator kinerja, dan interpretasi hasil.</p><span class="tag">Data & evaluasi</span></article>
-<article class="card agent"><div class="icon">💰</div><h4>Revenue Tracker</h4><p>Pencatatan rencana pendapatan dan biaya secara manual.</p><span class="tag">Keuangan</span></article>
-<article class="card agent"><div class="icon">🛡️</div><h4>Human Approval</h4><p>Transaksi, pengiriman pesan, dan publikasi tetap memerlukan persetujuan manusia.</p><span class="tag">Keamanan</span></article>
+<article class="card agent">
+  <div class="icon">🔬</div><h4>Research Agent</h4>
+  <span class="tag">Mitra riset & akademik</span>
+  <p class="agent-scope">Menguji kekuatan gagasan, bukan sekadar merangkum. Membantu merumuskan pertanyaan penelitian, membangun kerangka teori, memilih metode, dan menilai apakah kesimpulan benar-benar didukung data.</p>
+  <p><strong>Hasil kerja:</strong> desain penelitian, telaah kritis, hipotesis, strategi identifikasi, kerangka artikel, dan revisi akademik.</p>
+  <button type="button" class="btn secondary smallbtn agent-open" data-agent="research">Gunakan Research Agent</button>
+</article>
+<article class="card agent">
+  <div class="icon">💼</div><h4>Business Intelligence Agent</h4>
+  <span class="tag">Penasihat keputusan bisnis</span>
+  <p class="agent-scope">Membaca situasi bisnis dari sisi pelanggan, pasar, penawaran, pesaing, biaya, dan kapasitas. Membandingkan pilihan serta menjelaskan konsekuensi tiap keputusan.</p>
+  <p><strong>Hasil kerja:</strong> diagnosis bisnis, segmentasi, proposisi nilai, model pendapatan, KPI, skenario, dan peta jalan tindakan.</p>
+  <button type="button" class="btn secondary smallbtn agent-open" data-agent="business">Gunakan Business Intelligence</button>
+</article>
+<article class="card agent">
+  <div class="icon">📣</div><h4>Marketing Agent</h4>
+  <span class="tag">Strategi merek & komunikasi</span>
+  <p class="agent-scope">Mengubah keunggulan produk menjadi pesan yang relevan bagi audiens. Menentukan sudut cerita, bahasa, kanal, ajakan bertindak, dan urutan kampanye.</p>
+  <p><strong>Hasil kerja:</strong> positioning, persona audiens, naskah promosi, konten LinkedIn, kalender editorial, dan evaluasi kampanye.</p>
+  <button type="button" class="btn secondary smallbtn agent-open" data-agent="marketing">Gunakan Marketing Agent</button>
+</article>
+<article class="card agent">
+  <div class="icon">📊</div><h4>Data Analytics Agent</h4>
+  <span class="tag">Analis statistik & ekonometrika</span>
+  <p class="agent-scope">Memeriksa struktur data, kecocokan metode, asumsi, spesifikasi model, dan ketahanan hasil. Menjelaskan temuan dalam bahasa substantif, bukan hanya membaca nilai signifikansi.</p>
+  <p><strong>Hasil kerja:</strong> audit data, syntax Stata/Python, tabel estimasi, uji diagnostik, robustness check, dan interpretasi hasil.</p>
+  <button type="button" class="btn secondary smallbtn agent-open" data-agent="analytics">Gunakan Data Analytics</button>
+</article>
+<article class="card agent">
+  <div class="icon">💰</div><h4>Revenue Tracker</h4>
+  <span class="tag">Perencanaan pendapatan & biaya</span>
+  <p class="agent-scope">Menganalisis harga, biaya langsung, margin, arus kas, piutang, dan prioritas penagihan. Memisahkan IDR dan USD agar angka tidak tercampur.</p>
+  <p><strong>Hasil kerja:</strong> kalkulasi margin, proyeksi, skenario harga, ringkasan transaksi, dan daftar tindak lanjut pembayaran.</p>
+  <button type="button" class="btn secondary smallbtn agent-open" data-agent="revenue">Gunakan Revenue Tracker</button>
+</article>
+<article class="card agent">
+  <div class="icon">🛡️</div><h4>Human Approval</h4>
+  <span class="tag">Pemeriksaan sebelum tindakan</span>
+  <p class="agent-scope">Berperan sebagai pemeriksa terakhir sebelum keputusan dijalankan. Menilai bukti, risiko, privasi, kewenangan, dampak, dan kemungkinan membatalkan tindakan.</p>
+  <p><strong>Hasil kerja:</strong> rekomendasi setuju, tunda, revisi, atau tolak; daftar risiko; dan checklist persetujuan manusia.</p>
+  <button type="button" class="btn secondary smallbtn agent-open" data-agent="approval">Gunakan Human Approval</button>
+</article>
 </section>
 
-<section class="research-box" id="research"><div class="eyebrow">LIVE AI CONNECTION</div><h3 style="margin:8px 0">Kirim tugas ke AI</h3><p style="color:#b5c0df;line-height:1.55;font-size:13px">Pilih agen, masukkan pertanyaan, lalu kirim ke Cloudflare Worker.</p>
-<label for="activeAgent" style="display:block;color:var(--muted);font-size:12px;margin:12px 0 6px">Pilih agen AI</label><select id="activeAgent" style="width:100%;background:#0c1325;border:1px solid #34405f;border-radius:10px;padding:11px;color:var(--txt)"><option value="research">Research Agent</option><option value="analytics">Data Analytics Agent</option><option value="business">Business Intelligence Agent</option><option value="marketing">Marketing Agent</option><option value="revenue">Revenue Tracker Agent</option><option value="approval">Human Approval Agent</option></select>
-<label for="researchQuestion" style="display:block;color:var(--muted);font-size:12px;margin:12px 0 6px">Pertanyaan atau tugas</label><textarea id="researchQuestion" maxlength="6000" placeholder="Tuliskan tugas untuk agen AI..."></textarea><div class="research-actions"><button id="researchSend" class="btn primary" type="button">🔎 Analisis dengan AI</button><button id="researchClear" class="btn secondary" type="button">Bersihkan</button></div><div id="researchStatus" class="research-status" role="status" aria-live="polite">Siap menerima pertanyaan.</div><div id="researchAnswer" class="research-answer"><h4 id="researchAnswerHeading">Jawaban AI Agent</h4><div id="researchAnswerText" class="research-result"></div></div></section>
+<section class="research-box" id="research">
+<div class="eyebrow">AI AGENT WORKSPACE · CONVERSATIONAL MODE</div>
+<h3 style="margin:8px 0">Ruang Kerja AI — Enam Peran, Enam Cara Membantu</h3>
+<p style="color:#b5c0df;line-height:1.6;font-size:13px">Pilih agen sesuai pekerjaan. Setiap agen memiliki fokus, alur kerja, dan bentuk hasil yang berbeda. Percakapan lanjutan dalam sesi halaman yang sama akan menjadi konteks agar Anda tidak perlu mengulang penjelasan dari awal.</p>
+
+<label for="activeAgent" style="display:block;color:var(--muted);font-size:12px;margin:12px 0 6px">Pilih agen AI</label>
+<select id="activeAgent" style="width:100%;background:#0c1325;border:1px solid #34405f;border-radius:10px;padding:11px;color:var(--txt)">
+<option value="research">Research Agent</option>
+<option value="business">Business Intelligence Agent</option>
+<option value="marketing">Marketing Agent</option>
+<option value="analytics">Data Analytics Agent</option>
+<option value="revenue">Revenue Tracker</option>
+<option value="approval">Human Approval</option>
+</select>
+
+<div id="agentProfile" class="agent-profile" aria-live="polite">
+  <h4 id="agentProfileTitle">Research Agent · Mitra riset dan akademik</h4>
+  <p id="agentProfileSummary">Membantu menguji gagasan, memilih pendekatan, dan memastikan argumen penelitian konsisten.</p>
+  <span class="profile-label">Cara kerja</span>
+  <p id="agentProfileMethod">Memahami masalah → memeriksa teori dan bukti → menyusun pilihan metode → memberi rekomendasi beserta keterbatasannya.</p>
+  <span class="profile-label">Contoh permintaan</span>
+  <div id="agentStarters" class="agent-chips"></div>
+</div>
+
+<label for="researchQuestion" style="display:block;color:var(--muted);font-size:12px;margin:12px 0 6px">Apa yang sedang ingin Anda kerjakan?</label>
+<textarea id="researchQuestion" maxlength="6000" placeholder="Ceritakan konteks, tujuan, dan hasil yang Anda perlukan. Anda boleh menulis seperti sedang berdiskusi dengan rekan kerja."></textarea>
+
+<div class="research-actions">
+<button id="researchSend" class="btn primary" type="button">Kirim ke agen AI</button>
+<button id="researchClear" class="btn secondary" type="button">Mulai percakapan baru</button>
+</div>
+
+<div class="agent-note">
+<strong>Catatan kemampuan:</strong> AI Worker menerima pilihan agen dan instruksi kerja khusus untuk mengarahkan jawaban. Agen tidak otomatis membaca file, data transaksi lokal, Stata di komputer, rekening bank, atau akun media sosial. Sertakan data yang ingin dianalisis. Human Approval memberi rekomendasi pemeriksaan, bukan mengeksekusi pembayaran atau publikasi.
+</div>
+
+<div id="researchStatus" class="research-status" role="status" aria-live="polite">Research Agent siap berdiskusi.</div>
+<div id="conversationThread" class="chat-thread" aria-live="polite">
+  <div class="chat-message assistant">
+    <div class="message-label">RESEARCH AGENT</div>
+    <div class="message-body">Halo. Ceritakan ide atau persoalan yang sedang Anda hadapi. Kita uraikan bersama, lalu saya bantu menentukan langkah yang masuk akal.</div>
+  </div>
+</div>
+</section>
 
 <div class="head"><h3>Task Manager</h3><p>Daftar tugas tersimpan secara lokal di browser ini.</p></div>
 <section class="work"><div class="card"><form id="taskForm"><div class="field"><label>Nama tugas</label><input id="title" maxlength="120" required placeholder="Contoh: Validasi ide produk digital"></div><div class="field"><label>Agen</label><select id="agent"><option>Business Intelligence Agent</option><option>Research Agent</option><option>Marketing Agent</option><option>Data Analytics Agent</option><option>Revenue Tracker Agent</option><option>Human Approval Agent</option></select></div><div class="field"><label>Catatan</label><textarea id="desc" maxlength="500" placeholder="Hasil yang ingin dicapai..."></textarea></div><button class="btn primary">Simpan tugas</button></form></div><div class="card"><div style="display:flex;justify-content:space-between;gap:8px;align-items:center"><h3>Daftar tugas</h3><button id="clearTasks" class="btn secondary">Hapus selesai</button></div><div id="list" class="tasks"></div></div></section>
@@ -135,9 +233,251 @@ function renderTasks(){el('total')&&(el('total').textContent=tasks.length);el('d
 el('taskForm').onsubmit=e=>{e.preventDefault();tasks.push({title:el('title').value.trim(),agent:el('agent').value,desc:el('desc').value.trim(),done:false,created:new Date().toISOString()});saveTasks();e.target.reset()};
 el('clearTasks').onclick=()=>{tasks=tasks.filter(t=>!t.done);saveTasks()};
 renderTasks();
+
 const AGENT_API='https://davy-research-agent.davyhendri74.workers.dev/agent';
-const AGENT_NAMES={research:'Research Agent',analytics:'Data Analytics Agent',business:'Business Intelligence Agent',marketing:'Marketing Agent',revenue:'Revenue Tracker Agent',approval:'Human Approval Agent'};
-el('activeAgent').addEventListener('change',()=>{const name=AGENT_NAMES[el('activeAgent').value]||'AI Agent';el('researchAnswerHeading').textContent='Jawaban '+name;el('researchStatus').textContent='Agen aktif: '+name+'. Siap menerima pertanyaan.'});
-el('researchSend').addEventListener('click',async()=>{const question=el('researchQuestion').value.trim(),status=el('researchStatus'),answerBox=el('researchAnswer'),answerText=el('researchAnswerText'),btn=el('researchSend');if(question.length<3){status.textContent='Silakan ketik pertanyaan yang lebih jelas.';el('researchQuestion').focus();return}const agentKey=el('activeAgent').value,agentName=AGENT_NAMES[agentKey]||'AI Agent';el('researchAnswerHeading').textContent='Jawaban '+agentName;btn.disabled=true;btn.textContent='⏳ AI sedang menganalisis…';status.textContent='Mengirim pertanyaan ke '+agentName+'…';answerBox.style.display='none';answerBox.classList.remove('error');try{const res=await fetch(AGENT_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({question,agent:agentKey})});const data=await res.json();if(!res.ok||!data.answer)throw new Error(data.error||'Permintaan gagal. Periksa Worker dan coba lagi.');answerText.textContent=data.answer;answerBox.style.display='block';status.textContent='Selesai · Model: '+(data.model||'AI')}catch(err){answerText.textContent='Maaf, jawaban belum dapat diambil. '+(err.message||'Periksa koneksi internet dan coba lagi.');answerBox.style.display='block';answerBox.classList.add('error');status.textContent='Terjadi kendala saat menghubungi AI.'}finally{btn.disabled=false;btn.textContent='🔎 Analisis dengan AI'}});
-el('researchClear').addEventListener('click',()=>{el('researchQuestion').value='';el('researchAnswerText').textContent='';el('researchAnswer').style.display='none';el('researchStatus').textContent='Siap menerima pertanyaan.'});
+
+const AGENT_CONFIG={
+ research:{
+  name:'Research Agent',
+  short:'Mitra riset dan akademik',
+  summary:'Membantu menguji gagasan, mempertajam pertanyaan penelitian, dan menjaga agar teori, metode, data, serta kesimpulan saling terhubung.',
+  method:'Memahami masalah → memeriksa teori dan bukti → membandingkan pendekatan metodologis → menyusun rekomendasi dan batasan.',
+  role:'Anda adalah mitra riset akademik yang kritis, teliti, dan konstruktif. Bantu pengguna merumuskan masalah, pertanyaan/hipotesis, kerangka teori, tinjauan literatur, desain penelitian, strategi identifikasi, dan struktur artikel. Uji konsistensi logika serta tunjukkan kelemahan argumen dengan sopan.',
+  rules:'Jangan mengarang referensi, DOI, temuan, atau data. Tandai bagian yang memerlukan verifikasi sumber. Bedakan fakta yang diberikan, interpretasi, dan usulan. Bila ada beberapa metode, bandingkan asumsi, kelebihan, keterbatasan, dan kondisi pemilihannya.',
+  starters:[
+   'Tolong bedah gagasan penelitian saya. Tunjukkan bagian yang kuat, celah logika, dan kontribusi yang mungkin.',
+   'Bantu pilih metode empiris yang tepat untuk pertanyaan penelitian ini. Jelaskan asumsi dan risiko identifikasinya.',
+   'Bertindaklah sebagai reviewer kritis. Periksa koherensi antara teori, hipotesis, metode, dan kesimpulan.'
+  ]
+ },
+ business:{
+  name:'Business Intelligence Agent',
+  short:'Penasihat keputusan bisnis',
+  summary:'Mengubah informasi pasar, pelanggan, biaya, dan kapasitas menjadi pilihan strategi yang dapat dibandingkan dan dijalankan.',
+  method:'Mendiagnosis situasi → mengenali pelanggan dan nilai yang ditawarkan → menghitung kelayakan → membandingkan skenario → menetapkan prioritas.',
+  role:'Anda adalah penasihat business intelligence dan strategi. Analisis model bisnis, pelanggan, segmentasi, proposisi nilai, posisi pasar, harga, pesaing, proses operasi, biaya, serta peluang pertumbuhan. Jangan berhenti pada daftar SWOT; ubah temuan menjadi pilihan keputusan dan langkah implementasi.',
+  rules:'Jangan mengarang ukuran pasar, data pesaing, atau perilaku pelanggan. Jika informasi belum tersedia, sebutkan asumsi dan data minimum yang perlu dikumpulkan. Berikan skenario realistis, optimistis, dan konservatif bila relevan.',
+  starters:[
+   'Evaluasi model bisnis ini: siapa pelanggan utamanya, masalah apa yang diselesaikan, dan dari mana pendapatan datang?',
+   'Bandingkan tiga pilihan strategi pertumbuhan berikut dari biaya, risiko, dan potensi manfaat.',
+   'Susun rencana 90 hari untuk membawa produk digital ini dari prototipe menuju pengguna pertama.'
+  ]
+ },
+ marketing:{
+  name:'Marketing Agent',
+  short:'Strategi merek dan komunikasi',
+  summary:'Menemukan cerita produk yang relevan, memilih audiens, dan menyusun pesan yang terasa alami untuk kanal yang tepat.',
+  method:'Mengenali audiens → merumuskan positioning → memilih pesan utama → menyusun konten dan ajakan → menentukan indikator evaluasi.',
+  role:'Anda adalah ahli strategi pemasaran dan komunikasi merek. Bantu membangun positioning, persona audiens, proposisi nilai, pesan kampanye, konten media sosial, email, landing page, dan kalender editorial. Tulis dengan bahasa manusia yang hidup, spesifik pada audiens, tidak terdengar seperti brosur generik.',
+  rules:'Hindari klaim berlebihan, testimoni palsu, urgensi palsu, dan janji hasil yang tidak terbukti. Sesuaikan nada dengan kanal dan pembaca. Saat diminta menulis, berikan naskah siap pakai, bukan hanya saran.',
+  starters:[
+   'Buat posting LinkedIn yang profesional tetapi hangat untuk memperkenalkan produk ini kepada akademisi dan praktisi.',
+   'Tentukan audiens utama, positioning, dan tiga pesan yang membedakan produk saya dari alternatifnya.',
+   'Buat kalender konten dua minggu dengan tema, format, hook, isi singkat, dan ajakan bertindak.'
+  ]
+ },
+ analytics:{
+  name:'Data Analytics Agent',
+  short:'Analis statistik dan ekonometrika',
+  summary:'Mendampingi pekerjaan dari pemeriksaan data hingga estimasi, uji diagnostik, robustness, dan interpretasi substantif.',
+  method:'Memahami struktur data dan variabel → mengaudit kualitas → memilih model → memeriksa asumsi → menafsirkan hasil dan batas inferensi.',
+  role:'Anda adalah analis data dan ekonometrika. Bantu memeriksa struktur dataset, definisi variabel, missing values, outlier, pemilihan model, spesifikasi, syntax Stata/Python, uji diagnostik, standard errors, robustness checks, serta interpretasi hasil untuk naskah ilmiah.',
+  rules:'Jangan membuat angka estimasi atau hasil uji yang tidak diberikan. Bedakan syntax usulan dari hasil yang benar-benar dijalankan. Jelaskan asumsi, potensi bias, dan batas interpretasi. Berikan kode yang dapat dijalankan, komentar, serta pemeriksaan hasil bila diminta.',
+  starters:[
+   'Saya menggunakan Stata 17. Tolong susun alur analisis dan syntax untuk model yang sesuai dengan struktur data ini.',
+   'Periksa apakah interpretasi koefisien dan signifikansi pada tabel hasil saya sudah tepat.',
+   'Rancang robustness checks dan uji diagnostik yang relevan untuk model empiris ini.'
+  ]
+ },
+ revenue:{
+  name:'Revenue Tracker',
+  short:'Perencanaan pendapatan dan biaya',
+  summary:'Membantu menilai harga, biaya, margin, arus kas, piutang, serta prioritas tindak lanjut pembayaran secara terpisah per mata uang.',
+  method:'Memeriksa kelengkapan transaksi → memisahkan pendapatan dan biaya → menghitung margin → membaca arus kas dan piutang → menyusun tindakan.',
+  role:'Anda adalah analis operasi pendapatan dan keuangan usaha. Bantu menyusun penawaran, struktur harga, perhitungan biaya, margin kontribusi, proyeksi pendapatan, arus kas, umur piutang, dan prioritas penagihan. Pisahkan IDR dan USD; jangan menjumlahkan mata uang berbeda tanpa kurs dan tanggal konversi yang diberikan.',
+  rules:'Dashboard statis ini tidak mengirim catatan localStorage atau terhubung ke bank/PayPal. Gunakan hanya angka dan transaksi yang pengguna tempelkan dalam percakapan. Jangan menyatakan pembayaran sudah diterima tanpa bukti. Tampilkan rumus dan asumsi perhitungan.',
+  starters:[
+   'Bantu hitung harga jual minimum dari rincian biaya ini, lalu jelaskan margin pada beberapa skenario.',
+   'Kelompokkan transaksi berikut menjadi dibayar, belum dibayar, dan perlu diverifikasi. Pisahkan IDR dan USD.',
+   'Buat proyeksi arus kas tiga bulan dari pendapatan, biaya, dan jadwal pembayaran berikut.'
+  ]
+ },
+ approval:{
+  name:'Human Approval',
+  short:'Pemeriksaan sebelum tindakan',
+  summary:'Menjadi pemeriksa akhir untuk menemukan risiko, informasi yang belum lengkap, dampak, dan kebutuhan persetujuan sebelum tindakan dilakukan.',
+  method:'Memeriksa tujuan dan kewenangan → memvalidasi bukti → menilai risiko dan reversibilitas → memberi rekomendasi → menyusun checklist persetujuan.',
+  role:'Anda adalah reviewer tata kelola dan pengendalian sebelum tindakan. Tinjau keputusan, transaksi, pesan, publikasi, penggunaan data, atau perubahan sistem dari sisi akurasi, privasi, keamanan, kewenangan, dampak, kepatuhan, dan kemungkinan pembatalan.',
+  rules:'Berikan status rekomendasi yang jelas: SETUJUI, TUNDA, PERBAIKI, atau TOLAK, beserta alasan dan syaratnya. Anda tidak memiliki kewenangan untuk benar-benar membayar, mengirim, menerbitkan, menghapus, atau menyetujui tindakan di sistem luar. Keputusan akhir tetap pada manusia.',
+  starters:[
+   'Lakukan pemeriksaan pra-publikasi pada naskah ini. Periksa fakta, privasi, reputasi, dan potensi salah tafsir.',
+   'Tinjau rencana transaksi ini. Apa risiko, informasi yang belum lengkap, dan kontrol yang harus dipenuhi?',
+   'Buat checklist persetujuan manusia sebelum perubahan ini diterapkan pada website.'
+  ]
+ }
+};
+
+const conversationHistory={research:[],business:[],marketing:[],analytics:[],revenue:[],approval:[]};
+
+function appendChatMessage(role,content,pending=false,meta=''){
+ const thread=el('conversationThread');
+ const box=document.createElement('div');
+ box.className='chat-message '+role+(pending?' pending':'');
+ const label=document.createElement('div');
+ label.className='message-label';
+ label.textContent=role==='user'?'ANDA':(AGENT_CONFIG[el('activeAgent').value]?.name||'AI AGENT')+(meta?' · '+meta:'');
+ const body=document.createElement('div');
+ body.className='message-body';
+ body.textContent=content;
+ box.append(label,body);
+ thread.append(box);
+ thread.scrollTop=thread.scrollHeight;
+ return {box,label,body};
+}
+
+function renderConversation(agentKey){
+ const thread=el('conversationThread');
+ thread.innerHTML='';
+ const cfg=AGENT_CONFIG[agentKey];
+ const history=conversationHistory[agentKey]||[];
+ if(!history.length){
+  appendChatMessage('assistant',
+   'Halo. Saya '+cfg.name+'. '+cfg.summary+'\n\nCeritakan konteksnya dengan cara Anda sendiri. Kita uraikan bersama dan tentukan langkah berikutnya.',
+   false
+  );
+  return;
+ }
+ history.forEach(m=>appendChatMessage(m.role,m.content,false,m.meta||''));
+}
+
+function updateAgentProfile(agentKey){
+ const cfg=AGENT_CONFIG[agentKey]||AGENT_CONFIG.research;
+ el('agentProfileTitle').textContent=cfg.name+' · '+cfg.short;
+ el('agentProfileSummary').textContent=cfg.summary;
+ el('agentProfileMethod').textContent=cfg.method;
+ const chips=el('agentStarters');
+ chips.innerHTML='';
+ cfg.starters.forEach((prompt,index)=>{
+  const button=document.createElement('button');
+  button.type='button';
+  button.className='agent-chip';
+  button.textContent='Contoh '+(index+1);
+  button.title=prompt;
+  button.addEventListener('click',()=>{
+   el('researchQuestion').value=prompt;
+   el('researchQuestion').focus();
+  });
+  chips.append(button);
+ });
+ el('researchQuestion').placeholder='Tulis pesan untuk '+cfg.name+'. Anda boleh menjelaskan konteks seperti sedang berdiskusi dengan rekan kerja.';
+ el('researchAnswerHeading')&&(el('researchAnswerHeading').textContent='');
+}
+
+function selectAgent(agentKey,scroll=true){
+ if(!AGENT_CONFIG[agentKey])return;
+ el('activeAgent').value=agentKey;
+ updateAgentProfile(agentKey);
+ renderConversation(agentKey);
+ el('researchStatus').textContent=AGENT_CONFIG[agentKey].name+' siap membantu. Pilih contoh permintaan atau tulis kebutuhan Anda sendiri.';
+ if(scroll)document.querySelector('#research').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function buildAgentPrompt(agentKey,userQuestion){
+ const cfg=AGENT_CONFIG[agentKey];
+ const history=conversationHistory[agentKey]||[];
+ const prior=history.slice(-8).map(m=>(m.role==='user'?'Pengguna':'Anda')+': '+m.content.slice(0,1800)).join('\n\n');
+ return [
+  'PERAN KERJA: '+cfg.role,
+  'CARA BERKOMUNIKASI: Gunakan bahasa Indonesia yang alami, hangat, profesional, dan luwes seperti rekan ahli yang sedang berdiskusi. Jangan terdengar seperti formulir, mesin, atau brosur. Jangan mengulang pertanyaan pengguna sebagai pembuka. Jawab inti persoalan terlebih dahulu, lalu jelaskan alasan dan langkah praktis. Variasikan bentuk jawaban sesuai kebutuhan; gunakan paragraf, tabel, contoh, atau kode hanya jika membantu. Jangan mengaku sebagai manusia.',
+  'CARA MENANGANI KONTEKS: Jangan meminta ulang informasi yang sudah muncul dalam percakapan. Bila ada kekurangan informasi yang benar-benar mengubah keputusan, ajukan satu pertanyaan paling penting. Bila masih bisa bekerja dengan asumsi yang wajar, nyatakan asumsinya dan lanjutkan.',
+  'STANDAR KETELITIAN: '+cfg.rules,
+  prior?'KONTEKS PERCAKAPAN SEBELUMNYA:\n'+prior:'',
+  'PESAN TERBARU PENGGUNA:\n'+userQuestion,
+  'Tanggapi pesan terbaru dengan mempertimbangkan konteks. Berikan hasil kerja nyata, bukan sekadar mengulang deskripsi peran Anda.'
+ ].filter(Boolean).join('\n\n');
+}
+
+el('activeAgent').addEventListener('change',()=>{
+ const key=el('activeAgent').value;
+ updateAgentProfile(key);
+ renderConversation(key);
+ el('researchStatus').textContent=AGENT_CONFIG[key].name+' siap berdiskusi.';
+});
+
+document.querySelectorAll('.agent-open').forEach(button=>{
+ button.addEventListener('click',()=>selectAgent(button.dataset.agent));
+});
+
+el('researchSend').addEventListener('click',async()=>{
+ const question=el('researchQuestion').value.trim();
+ const status=el('researchStatus');
+ const button=el('researchSend');
+ const agentSelect=el('activeAgent');
+ const agentKey=agentSelect.value;
+ const cfg=AGENT_CONFIG[agentKey];
+
+ if(question.length<3){
+  status.textContent='Ceritakan sedikit lebih lengkap agar agen dapat membantu dengan tepat.';
+  el('researchQuestion').focus();
+  return;
+ }
+
+ const history=conversationHistory[agentKey];
+ const payload=buildAgentPrompt(agentKey,question);
+
+ history.push({role:'user',content:question});
+ appendChatMessage('user',question);
+ const waiting=appendChatMessage('assistant','Saya sedang menelaah konteks dan menyusun jawaban…',true);
+
+ button.disabled=true;
+ agentSelect.disabled=true;
+ document.querySelectorAll('.agent-open').forEach(b=>b.disabled=true);
+ button.textContent='⏳ Sedang bekerja…';
+ status.textContent=cfg.name+' sedang mengerjakan permintaan Anda…';
+
+ try{
+  const response=await fetch(AGENT_API,{
+   method:'POST',
+   headers:{'Content-Type':'application/json'},
+   body:JSON.stringify({question:payload,agent:agentKey})
+  });
+  let data={};
+  try{data=await response.json()}catch(e){throw new Error('Respons server tidak dapat dibaca.')}
+  if(!response.ok||!data.answer)throw new Error(data.error||'Permintaan belum berhasil diproses. Periksa koneksi AI Worker.');
+
+  waiting.label.textContent=cfg.name+(data.model?' · '+data.model:'');
+  waiting.body.textContent=data.answer;
+  waiting.box.classList.remove('pending');
+  history.push({role:'assistant',content:data.answer,meta:data.model||''});
+
+  // Keep recent context manageable for the next turn in this page session.
+  if(history.length>12)history.splice(0,history.length-12);
+  status.textContent='Selesai. Anda dapat menanggapi hasil ini atau memperdalam bagian tertentu.';
+  el('researchQuestion').value='';
+ }catch(error){
+  waiting.label.textContent=cfg.name+' · koneksi bermasalah';
+  waiting.body.textContent='Saya belum dapat menyelesaikan permintaan karena koneksi AI mengalami kendala: '+(error.message||'silakan coba lagi.');
+  waiting.box.classList.remove('pending');
+  waiting.box.classList.add('error');
+  // Remove the unanswered user turn from retained conversation context.
+  history.pop();
+  status.textContent='Permintaan belum selesai. Periksa koneksi lalu coba kembali.';
+ }finally{
+  button.disabled=false;
+  agentSelect.disabled=false;
+  document.querySelectorAll('.agent-open').forEach(b=>b.disabled=false);
+  button.textContent='Kirim ke agen AI';
+ }
+});
+
+el('researchClear').addEventListener('click',()=>{
+ const key=el('activeAgent').value;
+ conversationHistory[key]=[];
+ el('researchQuestion').value='';
+ renderConversation(key);
+ el('researchStatus').textContent='Percakapan '+AGENT_CONFIG[key].name+' telah dimulai ulang.';
+});
+
+updateAgentProfile('research');
+renderConversation('research');
 </script></body></html>
