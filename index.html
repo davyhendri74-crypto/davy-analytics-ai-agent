@@ -20,20 +20,7 @@
 </head>
 <body><main class="app">
 <header class="top"><div class="brand"><div class="logo">DA</div><div><h1>Davy Analytics AI Agent</h1><p>Multi-business digital command center</p></div></div><span class="badge">PROTOTIPE v1.1</span></header>
-<section class="hero"><div class="eyebrow">AI BUSINESS OPERATING SYSTEM</div><h2>Satu dashboard untuk mengubah ide menjadi pekerjaan nyata.</h2><p>Kelola produk digital, catat pesanan dan transaksi, serta gunakan enam agen AI untuk mendukung riset, analitik, intelijen bisnis, pemasaran, pendapatan, dan persetujuan manusia.</p><button class="btn primary" onclick="document.querySelector('#orderCustomer').focus()">＋ Catat pesanan</button> <button class="btn secondary" onclick="document.querySelector('#agents').scrollIntoView({behavior:'smooth'})">Lihat agen AI</button></section>
-
-<div class="head"><h3>Tahap 1 · Business Dashboard</h3><p>Ringkasan pesanan dan keuangan berdasarkan catatan manual di browser ini.</p></div>
-<section class="metrics">
-<div class="metric"><span>Total pesanan</span><strong id="orderCount">0</strong></div>
-<div class="metric"><span>Menunggu verifikasi</span><strong id="pendingCount">0</strong></div>
-<div class="metric"><span>Pendapatan terverifikasi (IDR)</span><strong id="revenueIDR">Rp0</strong></div>
-<div class="metric"><span>Biaya pesanan dibayar (IDR)</span><strong id="costIDR">Rp0</strong></div>
-<div class="metric"><span>Pendapatan terverifikasi (USD)</span><strong id="revenueUSD">$0</strong></div>
-<div class="metric"><span>Biaya pesanan dibayar (USD)</span><strong id="costUSD">$0</strong></div>
-<div class="metric"><span>Pesanan belum dibayar</span><strong id="unpaidCount">0</strong></div>
-<div class="metric"><span>Produk ditawarkan</span><strong>15</strong></div>
-</section>
-<p class="subtle">Pendapatan hanya dihitung untuk pesanan berstatus “Dibayar”. Nilai IDR dan USD dipisahkan, tidak dijumlahkan lintas mata uang. Status pembayaran dicatat manual dan belum terhubung otomatis ke bank, PayPal, atau gateway.</p>
+<section class="hero"><div class="eyebrow">AI BUSINESS OPERATING SYSTEM</div><h2>Satu dashboard untuk mengubah ide menjadi pekerjaan nyata.</h2><p>Kelola produk digital, catat pesanan dan transaksi, serta gunakan enam agen AI untuk mendukung riset, analitik, intelijen bisnis, pemasaran, pendapatan, dan persetujuan manusia.</p><button class="btn primary" onclick="openOrderForm()">＋ Catat pesanan</button> <button class="btn secondary" onclick="document.querySelector('#agents').scrollIntoView({behavior:'smooth'})">Lihat agen AI</button></section>
 
 <div class="head"><h3>Cuplikan Buku · Game Theory</h3><p>Bab 5 — Keseimbangan Nash. Pengantar singkat materi ditampilkan langsung di dashboard.</p></div>
 <section class="card" id="game-theory-preview">
@@ -78,7 +65,7 @@
 
 </section>
 
-<div class="head"><h3>Tahap 2B · Metode Pembayaran</h3><p>Informasi pembayaran untuk pelanggan. Pastikan nama penerima dan detail pembayaran cocok sebelum mengirim uang.</p></div><section class="card"><div class="inline-fields"><div><div class="icon">🏦</div><h4>Transfer Bank BNI</h4><p>Nomor rekening: <strong>243584767</strong></p><p class="subtle">Mohon periksa nama pemilik rekening di aplikasi bank sebelum konfirmasi transfer.</p></div><div><div class="icon">💳</div><h4>PayPal</h4><p>Nama akun: <strong>Davy Hendri</strong></p><p>Username: <strong>@DavyHendri</strong></p><p class="subtle">Untuk menerima pembayaran, pelanggan dapat mencari akun berdasarkan username di PayPal. Periksa detail penerima sebelum mengirim.</p></div></div><p class="subtle">Catatan: bagian ini menampilkan instruksi pembayaran saja. Belum memproses atau memverifikasi pembayaran secara otomatis.</p></section><div class="head"><h3>Tahap 3 · Order & Revenue Tracker</h3><p>Tambahkan pesanan, catat biaya, verifikasi status pembayaran secara manual, dan ekspor ke CSV.</p></div>
+<div class="head"><h3>Tahap 2B · Metode Pembayaran</h3><p>Informasi pembayaran untuk pelanggan. Pastikan nama penerima dan detail pembayaran cocok sebelum mengirim uang.</p></div><section class="card"><div class="inline-fields"><div><div class="icon">🏦</div><h4>Transfer Bank BNI</h4><p>Nomor rekening: <strong>243584767</strong></p><p class="subtle">Mohon periksa nama pemilik rekening di aplikasi bank sebelum konfirmasi transfer.</p></div><div><div class="icon">💳</div><h4>PayPal</h4><p>Nama akun: <strong>Davy Hendri</strong></p><p>Username: <strong>@DavyHendri</strong></p><p class="subtle">Untuk menerima pembayaran, pelanggan dapat mencari akun berdasarkan username di PayPal. Periksa detail penerima sebelum mengirim.</p></div></div><p class="subtle">Catatan: bagian ini menampilkan instruksi pembayaran saja. Belum memproses atau memverifikasi pembayaran secara otomatis.</p></section><section id="orderSection" style="display:none"><div class="head"><h3>Formulir Pencatatan Pesanan</h3><p>Formulir dibuka saat tombol pesanan dipilih.</p></div>
 <section class="card">
 <form id="orderForm">
 <div class="inline-fields">
@@ -93,7 +80,8 @@
 <button class="btn primary" type="submit">＋ Simpan pesanan</button> <button class="btn secondary" type="button" id="exportCsv">Ekspor CSV</button> <button class="btn secondary" type="button" id="clearOrders">Hapus semua catatan</button>
 </form>
 </section>
-<section class="card section-card"><div style="display:flex;justify-content:space-between;gap:8px;align-items:center;flex-wrap:wrap"><h3>Daftar pesanan</h3><span class="subtle">Gunakan “Tandai dibayar” hanya setelah pembayaran benar-benar diperiksa.</span></div><div class="table-wrap"><table><thead><tr><th>ID / Tanggal</th><th>Pelanggan</th><th>Produk</th><th>Nilai</th><th>Biaya</th><th>Status</th><th>Catatan / tindakan</th></tr></thead><tbody id="orderRows"><tr><td colspan="7" class="empty">Belum ada pesanan.</td></tr></tbody></table></div></section>
+<p class="subtle">Catatan privasi: catatan pesanan hanya tersimpan pada browser/perangkat yang digunakan. Data tidak dikirim ke server dan tidak diterima otomatis oleh pemilik website.</p>
+</section>
 
 <div class="head" id="agents"><h3>AI Agent Workspace</h3><p>Enam agen AI yang sudah tersedia.</p></div>
 <section class="agents">
@@ -125,17 +113,17 @@ try{orders=JSON.parse(localStorage.getItem(ORDER_KEY)||'[]')}catch(e){}
 try{tasks=JSON.parse(localStorage.getItem(TASK_KEY)||'[]')}catch(e){}
 const money=(n,c)=>new Intl.NumberFormat('id-ID',{style:'currency',currency:c,maximumFractionDigits:2}).format(Number(n)||0);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-function saveOrders(){localStorage.setItem(ORDER_KEY,JSON.stringify(orders));renderOrders()}
-function renderOrders(){
- el('orderCount').textContent=orders.length;
- el('pendingCount').textContent=orders.filter(o=>o.status==='Menunggu verifikasi').length;
- el('unpaidCount').textContent=orders.filter(o=>o.status==='Belum dibayar').length;
- ['IDR','USD'].forEach(c=>{const paid=orders.filter(o=>o.status==='Dibayar'&&o.currency===c);el(c==='IDR'?'revenueIDR':'revenueUSD').textContent=money(paid.reduce((s,o)=>s+Number(o.amount),0),c);el(c==='IDR'?'costIDR':'costUSD').textContent=money(paid.reduce((s,o)=>s+Number(o.cost||0),0),c)});
- const body=el('orderRows');
- if(!orders.length){body.innerHTML='<tr><td colspan="7" class="empty">Belum ada pesanan. Isi formulir di atas untuk memulai.</td></tr>';return}
- body.innerHTML=orders.slice().reverse().map(o=>`<tr><td><b>${esc(o.id)}</b><br><span class="subtle">${new Date(o.created).toLocaleDateString('id-ID')}</span></td><td>${esc(o.customer)}</td><td>${esc(o.product)}</td><td>${money(o.amount,o.currency)}</td><td>${money(o.cost,o.currency)}</td><td><span class="status">${esc(o.status)}</span></td><td>${esc(o.notes||'—')}<br>${o.status!=='Dibayar'&&o.status!=='Dibatalkan'&&o.status!=='Dikembalikan'?`<button class="btn primary smallbtn" onclick="markPaid('${o.id}')">Tandai dibayar</button>`:''} <button class="btn secondary smallbtn" onclick="deleteOrder('${o.id}')">Hapus</button></td></tr>`).join('');
+function saveOrders(){localStorage.setItem(ORDER_KEY,JSON.stringify(orders))}
+
+function openOrderForm(){
+ const section=el('orderSection');
+ if(!section)return;
+ section.style.display='block';
+ section.scrollIntoView({behavior:'smooth',block:'start'});
+ el('orderCustomer').focus();
 }
-function chooseProduct(name){el('orderProduct').value=name;const priceMap={'Teori Permainan (Game Theory) — ISBN 978-623-08-2671-9':150000,'Penjara, Kriminalitas dan Efek Jera — ISBN 978-634-01-3233-5':175000,'Paket Video Google Flow untuk Pembelajaran':50000};const price=priceMap[name];if(price!==undefined){el('orderAmount').value=price;el('orderCurrency').value='IDR'}el('orderCustomer').focus();document.querySelector('#orderForm').scrollIntoView({behavior:'smooth',block:'start'})}
+
+function chooseProduct(name){el('orderProduct').value=name;const priceMap={'Teori Permainan (Game Theory) — ISBN 978-623-08-2671-9':150000,'Penjara, Kriminalitas dan Efek Jera — ISBN 978-634-01-3233-5':175000,'Paket Video Google Flow untuk Pembelajaran':50000};const price=priceMap[name];if(price!==undefined){el('orderAmount').value=price;el('orderCurrency').value='IDR'}openOrderForm()}
 el('orderForm').addEventListener('submit',e=>{e.preventDefault();const amount=Number(el('orderAmount').value),cost=Number(el('orderCost').value||0);if(!Number.isFinite(amount)||amount<0||cost<0){alert('Nilai pesanan dan biaya harus nol atau lebih.');return}const o={id:'DA-'+Date.now().toString().slice(-8),created:new Date().toISOString(),customer:el('orderCustomer').value.trim(),product:el('orderProduct').value,amount,currency:el('orderCurrency').value,cost,status:el('orderStatus').value,notes:el('orderNotes').value.trim()};orders.push(o);saveOrders();e.target.reset();el('orderCost').value='0';alert('Pesanan disimpan di browser ini. Pastikan status pembayaran sesuai hasil verifikasi nyata.')});
 window.markPaid=id=>{const o=orders.find(x=>x.id===id);if(!o)return;if(!confirm('Pastikan pembayaran sudah diterima dan diverifikasi di sumber pembayaran. Tandai pesanan ini sebagai Dibayar?'))return;o.status='Dibayar';saveOrders()};
 window.deleteOrder=id=>{if(!confirm('Hapus catatan pesanan ini?'))return;orders=orders.filter(o=>o.id!==id);saveOrders()};
@@ -145,7 +133,7 @@ function saveTasks(){localStorage.setItem(TASK_KEY,JSON.stringify(tasks));render
 function renderTasks(){el('total')&&(el('total').textContent=tasks.length);el('done')&&(el('done').textContent=tasks.filter(t=>t.done).length);el('active')&&(el('active').textContent=tasks.filter(t=>!t.done).length);const list=el('list');if(!tasks.length){list.innerHTML='<div class="empty">Belum ada tugas. Tambahkan tugas pertama.</div>';return}list.innerHTML='';tasks.slice().reverse().forEach(t=>{const row=document.createElement('div');row.className='task';const cb=document.createElement('input');cb.type='checkbox';cb.checked=!!t.done;cb.onchange=()=>{t.done=cb.checked;saveTasks()};const box=document.createElement('div');box.style.flex='1';const title=document.createElement('b');title.textContent=t.title;if(t.done)title.style.textDecoration='line-through';const meta=document.createElement('small');meta.textContent=t.agent+' · '+new Date(t.created).toLocaleDateString('id-ID')+(t.desc?' · '+t.desc:'');box.append(title,meta);row.append(cb,box);list.append(row)})}
 el('taskForm').onsubmit=e=>{e.preventDefault();tasks.push({title:el('title').value.trim(),agent:el('agent').value,desc:el('desc').value.trim(),done:false,created:new Date().toISOString()});saveTasks();e.target.reset()};
 el('clearTasks').onclick=()=>{tasks=tasks.filter(t=>!t.done);saveTasks()};
-renderOrders();renderTasks();
+renderTasks();
 const AGENT_API='https://davy-research-agent.davyhendri74.workers.dev/agent';
 const AGENT_NAMES={research:'Research Agent',analytics:'Data Analytics Agent',business:'Business Intelligence Agent',marketing:'Marketing Agent',revenue:'Revenue Tracker Agent',approval:'Human Approval Agent'};
 el('activeAgent').addEventListener('change',()=>{const name=AGENT_NAMES[el('activeAgent').value]||'AI Agent';el('researchAnswerHeading').textContent='Jawaban '+name;el('researchStatus').textContent='Agen aktif: '+name+'. Siap menerima pertanyaan.'});
