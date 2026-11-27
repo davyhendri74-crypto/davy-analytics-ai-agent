@@ -8,14 +8,14 @@ belong in the public HTML or this repository.
 
 Deploy `supabase/functions/order-alert/index.ts` as function name `order-alert`
 to the same Supabase project that contains the `public.orders` table. Keep
-JWT verification disabled for the database webhook only; the function checks
-the custom `x-office-webhook-secret` header itself.
+JWT verification disabled for this database webhook only. The function checks
+the `apikey` header against the `SUPABASE_SECRET_KEY` Edge Function secret.
 
 ## 2. Add Edge Function secrets
 
 In Supabase Dashboard → Edge Functions → Secrets, add:
 
-- `OFFICE_WEBHOOK_SECRET`: generate a long random secret (at least 32 bytes).
+- `SUPABASE_SECRET_KEY`: the project's Supabase secret key; keep it only in Edge Function Secrets.
 - `RESEND_API_KEY`: Resend API key.
 - `ORDER_ALERT_EMAIL`: email address that receives new-order alerts.
 - `RESEND_FROM`: sender address on a domain verified in Resend, e.g. `Davy Analytics <orders@your-verified-domain>`.
@@ -31,10 +31,10 @@ In Supabase Dashboard → Database → Webhooks, create a webhook:
 - Type: Supabase Edge Function
 - Function: `order-alert`
 - Method: `POST`
-- Header: `x-office-webhook-secret: [same OFFICE_WEBHOOK_SECRET]`
+- Use the Dashboard option **Add secret key** so Supabase sends the project secret in the `apikey` header.
 - Header: `Content-Type: application/json`
 
-Do not publish the secret. Use the same secret value in Edge Function Secrets and the webhook header.
+Do not paste the secret key into this repository or public HTML.
 
 ## 4. Optional WhatsApp Business notification
 
