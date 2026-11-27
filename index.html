@@ -216,12 +216,139 @@
 
  <div id="globalAccountSignedIn" class="global-step" hidden>
   <div class="global-head"><div><strong id="globalWelcome"></strong><p id="globalEmail" style="margin:4px 0;color:var(--muted)"></p></div><button id="globalSignOut" class="btn secondary" type="button">Keluar / Sign out</button></div>
-  <form id="globalProfileForm" class="global-profile-form">
-   <label>Nama tampilan / Display name<input id="globalProfileName" required minlength="2" maxlength="80"></label>
-   <label>Bahasa / Language<select id="globalProfileLanguage"><option value="id">Bahasa Indonesia</option><option value="en">English</option></select></label>
-   <label>Negara / Country code<input id="globalProfileCountry" maxlength="2" placeholder="ID, US, MY..."></label>
-   <button class="btn primary" type="submit">Simpan profil / Save profile</button>
-  </form>
+ 
+<div class="global-game-selection">
+  <h3 style="margin:0 0 6px">
+    Pilih Game / Choose Your Game
+  </h3>
+
+  <p style="margin:0 0 18px;color:var(--muted)">
+    Akun Anda berhasil masuk. Silakan pilih platform
+    pembelajaran atau simulasi yang ingin digunakan.
+  </p>
+
+  <div style="
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:14px;
+  ">
+
+    <!-- Battle of Choices -->
+    <a href="./battle-of-choices.html"
+       target="_blank"
+       rel="noopener noreferrer"
+       style="
+         display:block;
+         padding:20px;
+         border:1px solid #d6e2ef;
+         border-radius:16px;
+         background:#ffffff;
+         color:#17324d;
+         text-decoration:none;
+         transition:transform .2s,box-shadow .2s;
+       ">
+
+      <div style="font-size:36px;margin-bottom:12px">
+        🎮
+      </div>
+
+      <h4 style="margin:0 0 8px">
+        Battle of Choices
+      </h4>
+
+      <p style="font-size:13px;color:#64748b;margin:0 0 14px">
+        Game edukasi pengambilan keputusan,
+        pilihan alternatif, dan Multinomial Logit.
+      </p>
+
+      <span style="font-weight:700;color:#087eaa">
+        Buka Game →
+      </span>
+    </a>
+
+    <!-- Mudharabah Game -->
+    <a href="./mudharabah-game.html"
+       target="_blank"
+       rel="noopener noreferrer"
+       style="
+         display:block;
+         padding:20px;
+         border:1px solid #d6e2ef;
+         border-radius:16px;
+         background:#ffffff;
+         color:#17324d;
+         text-decoration:none;
+         transition:transform .2s,box-shadow .2s;
+       ">
+
+      <div style="font-size:36px;margin-bottom:12px">
+        🤝
+      </div>
+
+      <h4 style="margin:0 0 8px">
+        Mudharabah Game
+      </h4>
+
+      <p style="font-size:13px;color:#64748b;margin:0 0 14px">
+        Simulasi keputusan keuangan syariah,
+        akad mudharabah, dan hubungan bank-nasabah.
+      </p>
+
+      <span style="font-weight:700;color:#087eaa">
+        Buka Game →
+      </span>
+    </a>
+
+    <!-- Criminology Lab -->
+    <a href="https://davyhendri74-crypto.github.io/davy-analytics-ai-agent/criminology-lab.html"
+       target="_blank"
+       rel="noopener noreferrer"
+       style="
+         display:block;
+         padding:20px;
+         border:1px solid #d6e2ef;
+         border-radius:16px;
+         background:#ffffff;
+         color:#17324d;
+         text-decoration:none;
+         transition:transform .2s,box-shadow .2s;
+       ">
+
+      <div style="font-size:36px;margin-bottom:12px">
+        ⚖️
+      </div>
+
+      <h4 style="margin:0 0 8px">
+        Criminology Lab
+      </h4>
+
+      <p style="font-size:13px;color:#64748b;margin:0 0 14px">
+        Laboratorium data kriminalitas,
+        analisis kebijakan, dan simulasi sistem peradilan.
+      </p>
+
+      <span style="font-weight:700;color:#087eaa">
+        Buka Platform →
+      </span>
+    </a>
+
+  </div>
+</div>
+
+<!-- Form profil tetap dipertahankan agar fungsi JavaScript tidak error -->
+<form id="globalProfileForm"
+      class="global-profile-form"
+      style="display:none">
+
+  <input id="globalProfileName" value="Player">
+  <select id="globalProfileLanguage">
+    <option value="id">Bahasa Indonesia</option>
+    <option value="en">English</option>
+  </select>
+  <input id="globalProfileCountry" value="ID">
+
+</form>
+
   <p style="color:var(--muted);font-size:12px">Akun ini berlaku untuk ketiga game. Your account works across all three games.</p>
  </div>
  <p id="globalAccountMessage" role="status" aria-live="polite" style="margin:12px 0 0;color:var(--cyan)"></p>
