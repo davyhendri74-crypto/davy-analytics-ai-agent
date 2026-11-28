@@ -65,3 +65,19 @@ The Admin Pesanan page reads `public.orders` and uses the Supabase project URL
 already configured in that page. The notification function must be deployed to
 that exact project. Confirm the project before deployment; do not deploy to
 another Supabase project by mistake.
+
+
+## 6. Deploy via GitHub Actions (after adding GitHub secret)
+
+A manual deployment workflow is available at `.github/workflows/deploy-order-alert.yml`.
+
+1. Create a Supabase Personal Access Token in Supabase Account → Access Tokens. Do not send it in chat or commit it to the repository.
+2. In GitHub repository → Settings → Secrets and variables → Actions, create repository secret:
+   - Name: `SUPABASE_ACCESS_TOKEN`
+   - Value: the Supabase personal access token.
+3. Open GitHub → Actions → **Deploy order-alert Edge Function** → Run workflow.
+4. Confirm the workflow finishes successfully, then verify the function under Supabase Dashboard → Edge Functions.
+
+The workflow targets project ref `mfdbaavnikrdqalqqwgj`, which was identified in the existing Admin Pesanan configuration. If that project ref changes, update the workflow before running it.
+
+Note: this deploys the function only. It does not create the Database Webhook or set Resend/WhatsApp secrets. Complete those steps above in the target Supabase project.
