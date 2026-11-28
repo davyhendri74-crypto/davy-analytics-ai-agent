@@ -22,7 +22,7 @@ footer{text-align:center;color:#8791a4;font-size:12px;padding:20px}
 </style>
 </head>
 <body>
-<header><div class="brand">BATTLE OF CHOICES <small> · SIAPA PILIH APA?</small></div><div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:flex-end"><small>GAME EDUKATIF STATISTIK &amp; PERILAKU</small><a href="./index.html#interactiveGames" style="color:#f4bd55;text-decoration:none;font-weight:800;font-size:13px">← Kembali ke Portal</a></div></header>
+<header><div class="brand">BATTLE OF CHOICES <small> · SIAPA PILIH APA?</small></div><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end"><button id="boc-language-switch" class="btn ghost" style="padding:7px 11px;font-size:12px">🇬🇧 EN</button><small>GAME EDUKATIF STATISTIK &amp; PERILAKU</small><a href="./index.html#interactiveGames" style="color:#f4bd55;text-decoration:none;font-weight:800;font-size:13px">← Kembali ke Portal</a></div></header>
 <main>
 <section id="home" class="screen active">
  <div class="hero"><div><div class="eyebrow">PREDIKSI · KALKULASI · ARGUMENTASI</div><h1>Belajar memahami<br>pilihan manusia.</h1><p>Simulasi keputusan berbasis perilaku dan model Multinomial Logit. Kenali responden, baca kecenderungan model, kunci prediksi, lalu pertanggungjawabkan argumentasi Anda.</p><button class="btn primary" onclick="go('modes')">MASUK PERMAINAN →</button></div><img src="https://raw.githubusercontent.com/davyhendri74-crypto/battle-of-choices/main/assets/boc_logo.png" alt="Logo Battle of Choices"></div>
@@ -175,6 +175,107 @@ async function renderLB() {
   <div class="g-row"><button type="submit">Masuk / Sign in</button><span style="align-self:center">Gunakan akun global yang sama seperti portal Davy Analytics.</span></div>
  </form>
 </section>
+<script id="boc-language-switch">
+(function(){
+ const button=document.getElementById('boc-language-switch');
+ if(!button)return;
+ const key='boc_language_v2';
+ let lang='en';try{lang=localStorage.getItem(key)||'en'}catch(e){}
+ const pairs=[
+ ["PREDIKSI · KALKULASI · ARGUMENTASI","PREDICTION · CALCULATION · ARGUMENTATION"],
+ ["Belajar memahami","Learn to understand"],["pilihan manusia.","human choices."],
+ ["Simulasi keputusan berbasis perilaku dan model Multinomial Logit. Kenali responden, baca kecenderungan model, kunci prediksi, lalu pertanggungjawabkan argumentasi Anda.","A decision-making simulation based on behavior and the Multinomial Logit model. Meet the respondents, examine model tendencies, lock in your prediction, and justify your argument."],
+ ["MASUK PERMAINAN","ENTER GAME"],["Pilih mode permainan","Choose a game mode"],
+ ["Bank kasus dan sistem penilaian Latihan Mandiri dipisahkan dari Permainan Resmi.","The practice case bank and scoring system are separate from Official Play."],
+ ["REFLEKSI PRIBADI","PERSONAL REFLECTION"],["Latihan Mandiri","Independent Practice"],
+ ["Peserta membuka pilihan rahasia sendiri, mengerjakan checklist pembahasan, dan memperoleh nilai refleksi pribadi.","Players reveal the hidden choice themselves, complete the discussion checklist, and receive a personal reflection score."],
+ ["Mulai Latihan Mandiri","Start Independent Practice"],["KOMPETISI RESMI","OFFICIAL COMPETITION"],
+ ["Prediksi dikunci sebelum reveal. Fasilitator membuka pilihan aktual, menilai argumentasi, lalu mengonfirmasi skor.","Predictions are locked before the reveal. The facilitator reveals the actual choice, evaluates the argument, and confirms the score."],
+ ["Pilih Permainan Resmi","Choose Official Play"],["LIVE LEADERBOARD","LIVE LEADERBOARD"],
+ ["Cara Bermain","How to Play"],["Mode permainan","Game modes"],
+ ["Bank kasus berbeda dari Permainan Resmi. Tidak memerlukan PIN fasilitator.","The case bank differs from Official Play. No facilitator PIN is required."],
+ ["Mulai latihan","Start practice"],["Pilih sesi kelompok offline atau individual online.","Choose an offline group session or an online individual session."],
+ ["Lanjut","Continue"],["Permainan Resmi","Official Play"],["Offline — Kelompok","Offline — Group"],
+ ["Fasilitator mengelola sesi, membuka pilihan aktual, menilai argumentasi, dan menekan CONFIRM SCORE.","The facilitator manages the session, reveals the actual choice, evaluates arguments, and selects CONFIRM SCORE."],
+ ["Pilih kelompok","Choose group"],["Online — Individual","Online — Individual"],
+ ["Sesi individual dengan pencatatan skor resmi dan leaderboard.","An individual session with official score recording and a leaderboard."],
+ ["Pilih individual","Choose individual"],["Mode resmi membutuhkan sesi, PIN/otorisasi fasilitator, serta koneksi Supabase. Fitur tersebut belum diaktifkan pada prototype web.","Official mode requires a session, facilitator PIN/authorization, and a Supabase connection. These features are not yet enabled in the web prototype."],
+ ["Kembali","Back"],["Menu utama","Main menu"],["TAHAP 1 · CERITA RESPONDEN","STAGE 1 · RESPONDENT STORY"],
+ ["Kenali responden terlebih dahulu","Get to know the respondent first"],
+ ["Baca cerita dan konteks responden. Profil lengkap belum dibuka.","Read the respondent's story and context. The full profile is still locked."],
+ ["Buka kartu variabel","Reveal variable card"],["TAHAP 2 · KARTU VARIABEL","STAGE 2 · VARIABLE CARD"],
+ ["Pelajari karakter dan variabel","Explore characteristics and variables"],
+ ["Kartu variabel responden","Respondent variable card"],["Lihat kecenderungan model","View model tendencies"],
+ ["TAHAP 3 · KECENDERUNGAN MODEL","STAGE 3 · MODEL TENDENCIES"],
+ ["Baca probabilitas, bukan kepastian","Read probabilities, not certainties"],
+ ["Probabilitas model menunjukkan peluang bersyarat berdasarkan variabel dan parameter model.","Model probabilities indicate conditional likelihoods based on the variables and model parameters."],
+ ["Alternatif dengan probabilitas tertinggi bukan jaminan pilihan aktual.","The alternative with the highest probability is not guaranteed to be the actual choice."],
+ ["Pilih strategi argumentasi","Choose an argument strategy"],["TAHAP 4 · KUNCI PREDIKSI","STAGE 4 · LOCK PREDICTION"],
+ ["Pilih strategi dan kunci prediksi","Choose a strategy and lock your prediction"],
+ ["Strategi argumentasi tidak dapat diganti setelah dikunci.","The argument strategy cannot be changed once locked."],
+ ["MEMIHAK ANGKA","FOLLOW THE NUMBERS"],["MEMIHAK NARASI","FOLLOW THE NARRATIVE"],["SINTESIS KREATIF","CREATIVE SYNTHESIS"],
+ ["Pertahankan alternatif dengan probabilitas tertinggi dan baca selisihnya.","Choose the alternative with the highest probability and examine the differences."],
+ ["Jelaskan pilihan melalui alasan responden dan konteks profil.","Explain the choice using the respondent's reasons and profile context."],
+ ["Hubungkan kecenderungan model dengan kebutuhan aktual melalui kompromi realistis.","Connect model tendencies with actual needs through a realistic compromise."],
+ ["Prediksi pilihan aktual:","Predict the actual choice:"],["Kunci prediksi","Lock prediction"],["Buka pilihan aktual","Reveal actual choice"],
+ ["Prediksi dan strategi sudah dikunci. Lanjutkan untuk membuka pilihan aktual.","Your prediction and strategy are locked. Continue to reveal the actual choice."],
+ ["TAHAP 5 · REVEAL & REFLEKSI","STAGE 5 · REVEAL & REFLECTION"],
+ ["Bandingkan prediksi dengan pilihan aktual","Compare your prediction with the actual choice"],
+ ["Amati pilihan aktual, alasan responden, dan kecenderungan model.","Examine the actual choice, respondent's reasons, and model tendencies."],
+ ["Pilihan aktual:","Actual choice:"],["Prediksi Anda:","Your prediction:"],["Probabilitas model tertinggi:","Highest model probability:"],
+ ["Checklist argumentasi (2 poin per kriteria)","Argument checklist (2 points per criterion)"],
+ ["Menyebutkan pilihan aktual secara tepat.","Correctly identify the actual choice."],
+ ["Menggunakan alasan responden sebagai bukti.","Use the respondent's reasons as evidence."],
+ ["Menghubungkan profil atau cerita dengan pilihan.","Connect the profile or story to the choice."],
+ ["Membaca probabilitas sebagai peluang, bukan kepastian.","Interpret probability as likelihood, not certainty."],
+ ["Mengakui keterbatasan model atau trade-off.","Acknowledge model limitations or trade-offs."],
+ ["Skor refleksi:","Reflection score:"],["Akhiri sesi","End session"],["Lanjutkan","Continue"],["Ronde","Round"],["dari","of"],
+ ["Cara bermain","How to Play"],["Alur permainan","Game flow"],
+ ["Kenali cerita responden.","Read the respondent's story."],
+ ["Buka kartu variabel dan profil responden.","Reveal the variable card and respondent profile."],
+ ["Pelajari kecenderungan probabilitas model.","Examine the model's probability tendencies."],
+ ["Pilih strategi argumentasi: Memihak Angka, Memihak Narasi, atau Sintesis Kreatif.","Choose an argument strategy: Follow the Numbers, Follow the Narrative, or Creative Synthesis."],
+ ["Kunci prediksi sebelum pilihan aktual diungkap.","Lock your prediction before the actual choice is revealed."],
+ ["Bandingkan pilihan aktual, alasan responden, dan prediksi model.","Compare the actual choice, respondent's reasons, and model prediction."],
+ ["Susun argumentasi berdasarkan bukti, bukan asumsi.","Build your argument from evidence, not assumptions."],
+ ["Konsekuensi membatasi klaim dan penilaian peserta, bukan mengubah pilihan aktual responden. Probabilitas adalah peluang bersyarat, bukan kepastian perilaku.","Consequences limit claims and participant scoring; they do not change the respondent's actual choice. Probability is conditional likelihood, not behavioral certainty."],
+ ["Persiapan sesi resmi","Official session setup"],["Integrasi resmi belum aktif","Official integration is not active"],
+ ["Untuk menjaga validitas permainan, sesi resmi memerlukan alur fasilitator, PIN, bank kasus resmi, penilaian argumentasi, dan penyimpanan skor ke Supabase. Bagian ini tidak akan digantikan dengan skor latihan lokal.","To preserve game validity, Official Play requires a facilitator workflow, PIN, official case bank, argument assessment, and score storage in Supabase. This section will not be replaced with local practice scores."],
+ ["BATTLE OF CHOICES · Davy Analytics AI Agent","BATTLE OF CHOICES · Davy Analytics AI Agent"],
+ ["Profil lengkap belum dibuka","Full profile is locked"],["Kartu variabel terbuka","Variable card unlocked"],
+ ["Masuk / Sign in","Sign in"],["Gunakan akun global yang sama seperti portal Davy Analytics.","Use the same global account as the Davy Analytics portal."],
+ ["Masuk dengan akun global untuk merekam sesi dan hasil permainan.","Sign in with your global account to record your session and game results."],
+ ["Login gagal:","Login failed:"],["Gagal memeriksa akun:","Failed to check account:"],
+ ["Sesi gagal disimpan:","Failed to save session:"],["Sesi tersimpan","Session saved"],
+ ["Hasil latihan tersimpan di akun global","Practice results saved to your global account"],
+ ["Anda keluar dari akun global.","You have signed out of your global account."],
+ ["Bimbingan Tutor","Tutor Coaching"],["Belajar Sendiri","Independent Study"],["Belajar Kelompok","Group Study"],
+ ["Mahasiswi · mempertimbangkan akses belajar","Student · considering learning access"],
+ ["Responden · mempertimbangkan waktu dan dukungan","Respondent · considering time and support"],
+ ["Responden · mempertimbangkan interaksi","Respondent · considering interaction"],
+ ["Responden · mempertimbangkan target belajar","Respondent · considering learning goals"],
+ ["Responden · mempertimbangkan kemandirian","Respondent · considering independence"],
+ ["Akses tutor","Tutor access"],["Fleksibilitas waktu","Time flexibility"],["Biaya belajar","Learning cost"],
+ ["Perubahan jadwal","Schedule changes"],["Kebutuhan bantuan","Need for assistance"],["Waktu luang","Free time"],
+ ["Interaksi sosial","Social interaction"],["Kesesuaian jadwal","Schedule compatibility"],["Kemandirian","Independence"],
+ ["Target belajar","Learning goals"],["Beban aktivitas","Activity load"],["Pendampingan","Guidance"],
+ ["Ritme belajar","Learning pace"],["🔒 Profil lengkap belum dibuka","🔒 Full profile is locked"]
+ ];
+ const originals=new WeakMap();
+ function convert(text,toEnglish){let out=text;if(toEnglish){for(const [a,b] of pairs)out=out.split(a).join(b);out=out.replace(/TAHAP /g,'STAGE ').replace(/Ronde (\d+)/g,'Round $1').replace(/dari (\d+)/g,'of $1');}return out;}
+ function process(root,toEnglish){
+  const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);
+  const nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);
+  nodes.forEach(n=>{if(!originals.has(n))originals.set(n,n.nodeValue);const original=originals.get(n);n.nodeValue=toEnglish?convert(original,true):original;});
+  if(root.nodeType===1){['placeholder','title','aria-label'].forEach(a=>{if(root.hasAttribute(a)){const k='data-boc-original-'+a;if(!root.hasAttribute(k))root.setAttribute(k,root.getAttribute(a));root.setAttribute(a,toEnglish?convert(root.getAttribute(k),true):root.getAttribute(k));}});root.querySelectorAll('[placeholder],[title],[aria-label]').forEach(el=>['placeholder','title','aria-label'].forEach(a=>{if(el.hasAttribute(a)){const k='data-boc-original-'+a;if(!el.hasAttribute(k))el.setAttribute(k,el.getAttribute(a));el.setAttribute(a,toEnglish?convert(el.getAttribute(k),true):el.getAttribute(k));}}));}
+ }
+ function setLanguage(next){lang=next;try{localStorage.setItem(key,lang)}catch(e){}document.documentElement.lang=lang;button.textContent=lang==='en'?'🇮🇩 ID':'🇬🇧 EN';button.setAttribute('aria-label',lang==='en'?'Switch to Indonesian':'Switch to English');process(document.body,lang==='en');}
+ button.addEventListener('click',()=>setLanguage(lang==='en'?'id':'en'));
+ const observer=new MutationObserver(records=>{if(lang!=='en')return;records.forEach(r=>r.addedNodes.forEach(n=>{if(n.nodeType===1||n.nodeType===3)process(n,true)}));});
+ observer.observe(document.body,{childList:true,subtree:true});
+ setLanguage(lang);
+})();
+</script>
 <script id="global-game-account-bridge">
 (function(){
  const URL='https://rurfluvlcnexxuwfngaj.supabase.co',KEY='sb_publishable_7sAD1TO-uxvyTRprr1nvaw_06pyi737',GAME='battle_of_choices';
