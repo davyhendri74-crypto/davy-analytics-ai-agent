@@ -22,7 +22,7 @@ footer{text-align:center;color:#8791a4;font-size:12px;padding:20px}
 </style>
 </head>
 <body>
-<header><div class="brand">BATTLE OF CHOICES <small> · SIAPA PILIH APA?</small></div><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end"><button id="boc-language-switch" class="btn ghost" style="padding:7px 11px;font-size:12px">🇬🇧 EN</button><small>GAME EDUKATIF STATISTIK &amp; PERILAKU</small><a href="./index.html#interactiveGames" style="color:#f4bd55;text-decoration:none;font-weight:800;font-size:13px">← Kembali ke Portal</a></div></header>
+<header><div class="brand">BATTLE OF CHOICES <small> · SIAPA PILIH APA?</small></div><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end"><button id="boc-language-switch" class="btn ghost" style="position:fixed;top:12px;right:12px;z-index:99999;padding:9px 13px;font-size:12px;box-shadow:0 4px 18px #0004">🇬🇧 EN</button><small>GAME EDUKATIF STATISTIK &amp; PERILAKU</small><a href="./index.html#interactiveGames" style="color:#f4bd55;text-decoration:none;font-weight:800;font-size:13px">← Kembali ke Portal</a></div></header>
 <main>
 <section id="home" class="screen active">
  <div class="hero"><div><div class="eyebrow">PREDIKSI · KALKULASI · ARGUMENTASI</div><h1>Belajar memahami<br>pilihan manusia.</h1><p>Simulasi keputusan berbasis perilaku dan model Multinomial Logit. Kenali responden, baca kecenderungan model, kunci prediksi, lalu pertanggungjawabkan argumentasi Anda.</p><button class="btn primary" onclick="go('modes')">MASUK PERMAINAN →</button></div><img src="https://raw.githubusercontent.com/davyhendri74-crypto/battle-of-choices/main/assets/boc_logo.png" alt="Logo Battle of Choices"></div>
@@ -182,6 +182,22 @@ async function renderLB() {
  const key='boc_language_v2';
  let lang='en';try{lang=localStorage.getItem(key)||'en'}catch(e){}
  const pairs=[
+ ["Belajarlah untuk memahami","Learn to understand"],
+ ["pilihan manusia.","human choices."],
+ ["Simulasi pengambilan keputusan berdasarkan perilaku dan model Logit Multinomial. Temui responden, periksa kecenderungan model, tetapkan prediksi Anda, dan benarkan argumen Anda.","A decision-making simulation based on behavior and the Multinomial Logit model. Meet the respondents, examine model tendencies, make your prediction, and justify your argument."],
+ ["Kumpulan kasus latihan dan sistem penilaiannya terpisah dari Permainan Resmi.","Practice cases and their scoring system are separate from Official Play."],
+ ["MASUK PERMAINAN","ENTER GAME"],
+ ["Pilih mode permainan","Choose a game mode"],
+ ["Game edukatif statistik & perilaku","Educational game in statistics & behavior"],
+ ["PREDIKSI · KALKULASI · ARGUMENTASI","PREDICTION · CALCULATION · ARGUMENTATION"],
+ ["Belajar melalui permainan, avatar pemain, pengambilan keputusan, dan simulasi berbasis skenario.","Learn through games, player avatars, decision-making, and scenario-based simulations."],
+ ["Kumpulan kasus latihan","Practice case collection"],
+ ["Latihan Mandiri","Independent Practice"],
+ ["Permainan Resmi","Official Play"],
+ ["Pilih strategi argumentasi","Choose an argument strategy"],
+ ["Buka pilihan aktual","Reveal actual choice"],
+ ["Akhiri sesi","End session"],
+ ["Kembali","Back"],
  ["PREDIKSI · KALKULASI · ARGUMENTASI","PREDICTION · CALCULATION · ARGUMENTATION"],
  ["Belajar memahami","Learn to understand"],["pilihan manusia.","human choices."],
  ["Simulasi keputusan berbasis perilaku dan model Multinomial Logit. Kenali responden, baca kecenderungan model, kunci prediksi, lalu pertanggungjawabkan argumentasi Anda.","A decision-making simulation based on behavior and the Multinomial Logit model. Meet the respondents, examine model tendencies, lock in your prediction, and justify your argument."],
