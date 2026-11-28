@@ -9,10 +9,10 @@ Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response("ok", { headers: cors });
   if (req.method !== "POST") return json({ error: "POST required" }, 405);
 
-  // Supabase Database Webhook's Edge Function integration sends the project
-  // secret key in the apikey header. Keep that secret in Edge Function Secrets.
-  const expected = Deno.env.get("SUPABASE_SECRET_KEY");
-  const supplied = req.headers.get("apikey");
+  // Configure this custom header on the Database Webhook and keep the shared
+  // value in Edge Function Secrets. Do not use a publishable key here.
+  const expected = Deno.env.get("OFFICE_WEBHOOK_SECRET");
+  const supplied = req.headers.get("x-office-webhook-secret");
   if (!expected || !supplied || supplied !== expected) return json({ error: "Unauthorized webhook" }, 401);
 
   let payload: any;
